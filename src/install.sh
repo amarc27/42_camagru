@@ -1,1 +1,0 @@
-git clone https://github.com/amarc27/rush_template.git db
