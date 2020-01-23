@@ -14,10 +14,10 @@
         {
         ?>
             <p>
-                Pseudo : <?= htmlspecialchars($user["pseudo"]) ?>
-                Name : <?= htmlspecialchars($user["name"]) ?>
-                Email : <?= htmlspecialchars($user["mail"]) ?>
-                Date d'inscription : <?= htmlspecialchars($user["inscription_date"]) ?>
+                Pseudo : <?= htmlspecialchars($user["pseudo"]) ?><br>
+                Name : <?= htmlspecialchars($user["name"]) ?><br>
+                Email : <?= htmlspecialchars($user["mail"]) ?><br>
+                Date d'inscription : <?= htmlspecialchars($user["inscription_date"]) ?><br>
             </p>
         <?php
         }

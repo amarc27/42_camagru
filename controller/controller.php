@@ -4,6 +4,6 @@ require('./model/backend.php');
 
 function listAllUsers()
 {
-    $tata = getAllUsers();
-    return $tata;
+    $data = getAllUsers();
+    require('./view/showAllUsers.php');
 }
