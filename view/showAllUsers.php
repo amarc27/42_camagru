@@ -10,10 +10,18 @@
     <h1>Welcome to the Camagru project !</h1>
     <h4>This is the beginning of a hole new world</h4>
     <ul>
-        <?php while($users = $usersData->fetch())
+        <?php while($user = $data->fetch())
         {
-            echo "<li>" . "</li>";
+        ?>
+            <p>
+                Pseudo : <?= htmlspecialchars($user["pseudo"]) ?>
+                Name : <?= htmlspecialchars($user["name"]) ?>
+                Email : <?= htmlspecialchars($user["mail"]) ?>
+                Date d'inscription : <?= htmlspecialchars($user["inscription_date"]) ?>
+            </p>
+        <?php
         }
+        $data->closeCursor();
         ?>
     </ul>
 </body>
