@@ -1,7 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+
 body {
     margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #FAFAFA !important;
+}
+
+#navbar {
+    border-bottom: 1px solid lightgray;
 }
 
 nav {
-    border: 1px solid black;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 65px;
+    background-color: #FAFAFA !important;
+    width: 65%;
+    margin: auto;
+}
+
+nav div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+nav .logo .img-logo {
+    padding-right: 15px;
+}
+
+nav .logo hr {
+    border: none;
+    border-left: 1px solid black;
+    height: 30px;
+    width: 2px;
+    padding-right: 12px;
+}
+
+nav .logo .text-logo {
+    padding-left: 0px;
+}
+
+nav .logo p {
+    font-family: 'Pacifico', cursive;
+    font-size: 20px;
+}
+
+nav .logs-btns p {
+    padding: 0px 15px;
+}
+
+nav .search-bar input {
+    padding: 6px 20px;
+    text-align: center;
+    font-size: 13px;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
 }

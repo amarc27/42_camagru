@@ -5,7 +5,7 @@ require('./model/backend.php');
 
 function loadHeader()
 {
-    
+    require('./view/header.php');
 }
 
 function listAllUsers()

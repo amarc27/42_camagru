@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Welcome to the Camagru project !</h1>
-    <h4>This is the beginning of a hole new world</h4>
+    <h4>This is the beginning of a whole new world</h4>
     <ul>
         <?php while($user = $data->fetch())
         {

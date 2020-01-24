@@ -4,8 +4,8 @@ require('./controller/controller.php');
 try
 {
     loadHeader();
-    loadMain();
-    loadFooter();
+    // loadMain();
+    // loadFooter();
     $data = listAllUsers();
 }
 catch(Exception $e)
