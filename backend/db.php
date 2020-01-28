@@ -16,12 +16,3 @@ function dbConnect()
     else
         throw new Exception('Echec de la connexion a la base de donnees');
 }
-
-function getAllUsers()
-{
-    if (($db = dbConnect()) == false)
-        throw new Exception('dbConnectOk');
-    elseif (($req = $db->query('SELECT * FROM users WHERE 1')) == false)
-        throw new Exception("Here 2");
-    return $req;
-}
