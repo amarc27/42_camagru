@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,15 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Camagru</title>
-    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="../public/css/style.css">
 </head>
 <body>
     <div id="navbar">
             <nav>
                 <div class="logo">
-                    <img src="./public/images/iconmonstr-instagram-11.svg" class="img-logo" alt="Logo">
+                    <a href="../index.php"><img src="../public/images/iconmonstr-instagram-11.svg" class="img-logo" alt="Logo"></a>
                     <hr>
-                    <p id="text-logo">Camagru</p>
+                    <a href="../index.php"><p id="text-logo">Camagru</p></a>
                 </div>
                 <div class="search-bar">
                     <input type="text" placeholder="Rechercher">
@@ -24,18 +28,8 @@
                 </div>
             </nav>
     </div>
-    <section id="content">
-        <article id="photo-section">
-            <div id="photo-frame">
-                
-            </div>
-            <div id="sticker-frame">
-
-            </div>
-        </article>
-        <article id="feed">
-        
-        </article>
-    </section>
+    <!-- <section id="signup-form">
+        <form action="../backend/controller.php" method="post"></form>
+    </section> -->
 </body>
 </html>

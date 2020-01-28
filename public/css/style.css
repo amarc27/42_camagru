@@ -1,3 +1,6 @@
+/**********/
+/* GENERAL */
+/**********/
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
 
 @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
@@ -8,8 +11,19 @@ body {
     background-color: #FAFAFA !important;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+
+/**********/
+/* NAVBAR */
+/**********/
 #navbar {
     border-bottom: 1px solid lightgray;
+    margin-bottom: 50px;
 }
 
 nav {
@@ -50,14 +64,54 @@ nav .logo p {
     font-size: 20px;
 }
 
-nav .logs-btns p {
-    padding: 0px 15px;
-}
-
 nav .search-bar input {
     padding: 6px 20px;
     text-align: center;
     font-size: 13px;
     border: 1px solid #dbdbdb;
     border-radius: 5px;
+}
+
+nav .log-btns a {
+    padding: 0px 15px;
+}
+
+
+
+
+/****************/
+/* MAIN CONTENT */
+/****************/
+section {
+    width: 65%;
+    margin: auto;
+}
+
+#content {
+    display: flex;
+    flex-direction: ;
+}
+
+#photo-section {
+    margin-right: 20px;
+}
+
+#feed {
+    border: 1px solid black;
+    width: 600px;
+    height: 730px;
+    margin-left: 20px;
+}
+
+#photo-frame {
+    border: 1px solid black;
+    width: 600px;
+    height: 600px;
+    margin-bottom: 30px;
+}
+
+#sticker-frame {
+    border: 1px solid black;
+    width: 600px;
+    height: 100px;
 }
