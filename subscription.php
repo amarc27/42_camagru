@@ -21,4 +21,4 @@ $error = ft_error();
 
 print_r($_SESSION);
 
-require('./view/singupView.php');
+require('./view/signupView.php');

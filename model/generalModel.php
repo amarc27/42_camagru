@@ -13,5 +13,3 @@ function ft_error()
 	else
 		return "";
 }
-
-?>
