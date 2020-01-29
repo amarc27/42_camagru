@@ -1,6 +1,6 @@
 <?php
 
-require('./backend/db.php');
+require('./backend/database.php');
 
 function getAllUsers()
 {

@@ -89,7 +89,7 @@ section {
 
 #content {
     display: flex;
-    flex-direction: ;
+    flex-direction: row;
 }
 
 #photo-section {

@@ -28,8 +28,19 @@
                 </div>
             </nav>
     </div>
-    <!-- <section id="signup-form">
-        <form action="../backend/controller.php" method="post"></form>
-    </section> -->
+    <section id="signup-form">
+        <form action="../backend/controller.php" method="post">
+            <h3>Créer un compte</h3>
+            <input type="text" name="login" value="" placeholder="Pseudo" required />
+            <br />
+            <input type="email" name="login" value="" placeholder="Email" required />
+            <br />
+            <input type="text" name="login" value="" placeholder="Nom complet" required />
+            <br />
+            <input type="password" name="passwd" value="" placeholder="Mot de passe" required />
+            <br />
+            <input type="submit" name="submit" value="OK"/>
+        </form>
+    </section>
 </body>
 </html>
