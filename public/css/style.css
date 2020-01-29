@@ -85,6 +85,9 @@ nav .log-btns a {
 section {
     width: 65%;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #content {
@@ -114,4 +117,74 @@ section {
     border: 1px solid black;
     width: 600px;
     height: 100px;
+}
+
+
+
+/**********/
+/* FOOTER */
+/**********/
+footer p {
+    text-align: center;
+    margin-top: 100px;
+}
+
+
+
+/***********/
+/* SIGN UP */
+/***********/
+.subscription-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 250px;
+    padding: 25px 40px;
+    border: 1px solid #e6e6e6;
+    border-radius: 1px;
+    background-color: #FFF;
+    margin: 0px 10px;
+}
+
+.subscription-page > h1 {
+    margin: 20px 0px;
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+    font-size: 32px;
+    text-align: center;
+}
+
+.subscription-page > h3 {
+    margin: 20px 0px;
+    text-align: center;
+    color: #999999;
+}
+
+.subscription-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.subscription-form input {
+    margin: 10px 0px;
+    padding: 10px;
+    border: 1px solid #efefef;
+    border-radius: 4px;
+    background-color: #FAFAFA;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.subscription-form input[name=submit]{
+    background-color: #3897f0;
+    color: #fff;
+    border: 1px solid #FAFAFA;
+    border-radius: 4px;
+}
+
+.subscription-form input[name=submit]:hover{
+    background-color: lightsalmon;
+    border: 1px solid #FAFAFA;
 }
