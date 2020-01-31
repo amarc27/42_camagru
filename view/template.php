@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Camagru</title>
-    <link rel="stylesheet" href="../public/css/style.css">
-    <link rel="shortcut icon" href="../public/images/insta.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="shortcut icon" href="./public/images/insta.ico" type="image/x-icon">
 </head>
 <body>
     <div id="navbar">
             <nav>
                 <div class="logo">
-                    <img src="../public/images/iconmonstr-instagram-11.svg" class="img-logo" alt="Logo">
+                    <img src="./public/images/iconmonstr-instagram-11.svg" class="img-logo" alt="Logo">
                     <hr>
                     <p id="text-logo">Camagru</p>
                 </div>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="log-btns">
                     <a href="./view/login.php"><p>Log in</p></a>
-                    <a href="./view/signupView.php"><p>Sign up</p></a>
+                    <a href="../subscription.php"><p>Sign up</p></a>
                 </div>
             </nav>
     </div>

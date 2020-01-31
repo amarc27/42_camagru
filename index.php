@@ -25,7 +25,7 @@
                 </div>
                 <div class="log-btns">
                     <a href="./view/login.php"><p>Log in</p></a>
-                    <a href="./view/signupView.php"><p>Sign up</p></a>
+                    <a href="./subscription.php"><p>Sign up</p></a>
                 </div>
             </nav>
     </div>
