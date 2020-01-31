@@ -1,5 +1,7 @@
 <?php
 
+include ('../config/database.php');
+
 function ft_login_exist($login)
 {
 	$db = db_connect();
@@ -7,7 +9,8 @@ function ft_login_exist($login)
 	$sql = $db->prepare("SELECT * FROM user WHERE login=:login");
 	$sql->bindParam("login", $login, PDO::PARAM_STR);
 	$sql->execute();
-	$data = $sql->fetch(PDO::FETCH_OBJ);
+	// $data = $sql->fetch(PDO::FETCH_OBJ);
+	$data = $sql->fetch();
 	$db = null;
 	if ($data == "")
 		return true;
