@@ -24,7 +24,6 @@
                     <input type="text" placeholder="Rechercher">
                 </div>
                 <div class="log-btns">
-                    <a href="./view/login.php"><p>Log in</p></a>
                     <a href="./subscription.php"><p>Sign up</p></a>
                 </div>
             </nav>

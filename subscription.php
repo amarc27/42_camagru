@@ -19,21 +19,19 @@ if ((empty($_POST['login']) || empty($_POST['mail']) || empty($_POST['name']) ||
 
 else if (isset($_POST['login']) && isset($_POST['mail']) && isset($_POST['name']) && isset($_POST['passwd']) && isset($_POST['passwd2']) && isset($_POST['submit']) )
 {
-	if (ft_login_exist($_POST['login']) || ft_mail_exist($_POST['mail']))
+	if (!ft_login_exist($_POST['login']) && !ft_mail_exist($_POST['mail']))
 	{
-		echo "HERE";
 		if (preg_match('#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i', $_POST['mail']) == false)
 			$_SESSION['error'] = "Adresse e-mail non valide";
 		else if ($_POST['passwd'] != $_POST['passwd2'])
 			$_SESSION['error'] = "Les mots de passe ne sont pas identiques";
 		else 
 		{
-			header("Location: ./index.php");
-			// if (password_secure($_POST['passwd']))
-			// {
-			// 	 ft_user_new($_POST['login'], $_POST['passwd'], $_POST['mail']);
-			// 	 $_SESSION['error'] = "Un mail de confirmation vient d'&ecirc;tre envoy&eacute;";
-			// }
+			if (password_secure($_POST['passwd']))
+			{
+				ft_user_new($_POST['login'], $_POST['mail'], $_POST['name'], $_POST['passwd']);
+				 $_SESSION['error'] = "Un mail de confirmation vient d'&ecirc;tre envoy&eacute;";
+			}
 		}
 	}
 	else
@@ -42,9 +40,6 @@ else if (isset($_POST['login']) && isset($_POST['mail']) && isset($_POST['name']
 }
 
 $error = ft_error();
-
-print_r($_SESSION);
-print_r($_POST);
 
 require('./view/signupView.php');
 ?>
