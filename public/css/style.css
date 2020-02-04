@@ -125,6 +125,9 @@ section {
 /* FOOTER */
 /**********/
 footer p {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     text-align: center;
     margin-top: 100px;
 }
@@ -145,6 +148,7 @@ footer p {
     border-radius: 1px;
     background-color: #FFF;
     margin: 0px 10px;
+    margin-top: 60px;
 }
 
 .subscription-page > h1 {
@@ -187,4 +191,41 @@ footer p {
 .subscription-form input[name=submit]:hover{
     background-color: lightsalmon;
     border: 1px solid #FAFAFA;
+}
+
+
+
+/************/
+/* ACTIVATE */
+/************/
+section .activate-frame {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.activate-frame {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 350px;
+    padding: 25px 40px;
+    border: 1px solid #e6e6e6;
+    border-radius: 1px;
+    background-color: #FFF;
+    margin: 0px 10px;
+    margin-top: 60px;
+}
+
+.activate-frame .connection-btn {
+    background-color: #3897f0;
+    color: #fff;
+    border: 1px solid #FAFAFA;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.activate-frame .connection-btn a {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
 }

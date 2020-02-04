@@ -1,5 +1,5 @@
 <?php
-$srcDIR = "http://".$_SERVER['DOCUMENT_ROOT'];
+$srcDIR = "http://".$_SERVER['HTTP_HOST']."/camagru";
 ?>
 
 <!DOCTYPE html>
@@ -24,14 +24,14 @@ $srcDIR = "http://".$_SERVER['DOCUMENT_ROOT'];
                     <input type="text" placeholder="Rechercher">
                 </div>
                 <div class="log-btns">
-                    <a href="http://localhost:8080/camagru/view/login.php"><p>Log in</p></a>
-                    <a href=<?php $srcDIR."subscription.php"?>><p>Sign up</p></a>
+                    <a href=<?php echo $srcDIR."/login.php"?>><p>Log in</p></a>
+                    <a href=<?php echo $srcDIR."/signup.php"?>><p>Sign up</p></a>
                 </div>
             </nav>
     </div>
     
     <?= $content ?>
-    
+
     <footer>
         <p>Camagru 2020 | Made by amarc</p>
     </footer>

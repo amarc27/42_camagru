@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $srcDIR = "http://".$_SERVER['HTTP_HOST']."/camagru";
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@
                     <input type="text" placeholder="Rechercher">
                 </div>
                 <div class="log-btns">
-                    <a href="./subscription.php"><p>Sign up</p></a>
+                    <a href=<?php echo $srcDIR."/signup.php"?>><p>Sign up</p></a>
                 </div>
             </nav>
     </div>

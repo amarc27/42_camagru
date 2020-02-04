@@ -56,17 +56,15 @@ function ft_user_new($login, $mail, $name, $pass)
 
 function ft_activation_mail($login, $mail, $activation_key)
 {
-	$header = 'MIME-Version: 1.0'."\n".'Content-type: text/plain'."\n"."From: Camagru@contact.com"."\n";
-	$subject = "Camagru : activez votre compte"."\n";
-	$link = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
+	// $header = 'MIME-Version: 1.0'."\n".'Content-type: text/plain'."\n"."From: Camagru@contact.com"."\n";
+	$subject = "📥 Camagru : activez votre compte"."\n";
+	$link = "http://".$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 	$link = str_replace("subscription.php", "", $link);
 	$link .='activation.php?log='.urlencode($login).'&key='.urlencode($activation_key);
 
-	$message = "Bienvenue sur Camagru"."\n\n";
-	$message .="Pour activer votre compte veuillez cliquer sur le lien ci dessous."."\n\n";
-	$message .= $link;
-	$message .="\n\n"."---------------"."\n";
-	$message .="Ceci est un mail automatique, Merci de ne pas y répondre.";
+	$message = "Bienvenue sur Camagru !"."\n\n";
+	$message .="Pour activer votre compte veuillez cliquer sur le lien ci-dessous :"."\n\n";
+	$message .= "--> ".$link;
 	if (!(mail($mail, $subject, $message)))
 	{
 		$_SESSION['error'] = "Une erreur s&#39;est produite lors de l&#39;envoi du mail de confirmation.<br/> Veuillez recommencer la proc&eacute;dure";
@@ -84,4 +82,30 @@ function ft_mod_pass($login, $new_pass)
 	$sql->execute();
 	$db = null;
 	$_SESSION['error'] = "Mot de passe modifi&eacute;";
+}
+
+function activate_account($login)
+{
+	$db = db_connect();
+	$sql = $db->prepare("UPDATE user SET active = '1' WHERE login = :login");
+	$sql->bindParam(":login", $login, PDO::PARAM_STR);
+	$sql->execute();
+	$db = null;
+	$key = md5(microtime(TRUE)*100000);
+	modify_profile($login, 'activation_key', $key);
+}
+
+function modify_profile($login, $field, $value)
+{
+	$db = db_connect();
+
+	$login = htmlspecialchars($login);
+	$value = htmlspecialchars($value);
+
+	$sql = $db->prepare("UPDATE user SET ".$field."=:value WHERE login=:login");
+	$sql->bindParam(":login", $login, PDO::PARAM_STR);
+	$sql->bindParam(":value", $value, PDO::PARAM_STR);
+	$sql->execute();
+	$db = null;
+	return true;
 }
