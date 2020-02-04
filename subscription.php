@@ -29,8 +29,10 @@ else if (isset($_POST['login']) && isset($_POST['mail']) && isset($_POST['name']
 		{
 			if (password_secure($_POST['passwd']))
 			{
-				ft_user_new($_POST['login'], $_POST['mail'], $_POST['name'], $_POST['passwd']);
-				 $_SESSION['error'] = "Un mail de confirmation vient d'&ecirc;tre envoy&eacute;";
+				if (ft_user_new($_POST['login'], $_POST['mail'], $_POST['name'], $_POST['passwd']) == "toto")
+					$_SESSION['error'] = "Un mail de confirmation vient d'&ecirc;tre envoy&eacute;";
+				else
+					$_SESSION['error'] = "Erreur lors de l'envoi du mail";
 			}
 		}
 	}

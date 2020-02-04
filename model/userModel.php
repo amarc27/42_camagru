@@ -44,14 +44,18 @@ function ft_user_new($login, $mail, $name, $pass)
 	$pass = htmlspecialchars($pass);
 	
 	$activation_key = md5(microtime(TRUE)*100000);
-	$sql = $db->prepare("INSERT INTO user (login, mail, name, pass, activation_key) VALUES (:login, :mail, :name, '1', '".$activation_key."')");
+	$sql = $db->prepare("INSERT INTO user (login, mail, name, pass, active, activation_key) VALUES (:login, :mail, :name, '1', '0', '".$activation_key."')");
 	$sql->bindParam("login", $login, PDO::PARAM_STR);
 	$sql->bindParam("mail", $mail, PDO::PARAM_STR);
 	$sql->bindParam("name", $name, PDO::PARAM_STR);
 	$sql->execute();
 	$db = null;
-	ft_mod_pass($login, $pass);
-	ft_activation_mail($login, $mail, $activation_key);
+	if(ft_mod_pass($login, $pass) == "tata")
+		echo "SUCCESS MOD_PASS";
+		// ft_activation_mail($login, $mail, $activation_key);
+	if(ft_activation_mail($mail) == "titi")
+		echo "SUCCESS ACTIV_MAIL";
+	return "toto";
 }
 
 // function ft_activation_mail($login, $mail, $activation_key)
@@ -63,15 +67,16 @@ function ft_activation_mail($mail)
 	// $link = str_replace("subscription.php", "", $link);
 	// $link .='activation.php?log='.urlencode($login).'&key='.urlencode($activation_key);
 
-	$message = "Bienvenue sur Camagru,"."\n\n";
+	$message = "Bienvenue sur Camagru"."\n\n";
 	// $message .="Pour activer votre compte veuillez cliquer sur le lien ci dessous."."\n\n";
 	// $message .= $link;
 	// $message .="\n\n"."---------------"."\n";
 	// $message .="Ceci est un mail automatique, Merci de ne pas y répondre.";
-	if ( !mail($mail, $subject, $message)) 
+	if (!(mail($mail, $subject, $message)))
 	{
 		$_SESSION['error'] = "Une erreur s&#39;est produite lors de l&#39;envoi du mail de confirmation.<br/> Veuillez recommencer la proc&eacute;dure";
 	}
+	return "titi";
 }
 
 function ft_mod_pass($login, $new_pass)
@@ -85,5 +90,5 @@ function ft_mod_pass($login, $new_pass)
 	$sql->execute();
 	$db = null;
 	$_SESSION['error'] = "Mot de passe modifi&eacute;";
-	return true;
+	return "tata";
 }

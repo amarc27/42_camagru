@@ -1,7 +1,10 @@
 <?php
-require('./model/userModel.php');
+require('model/generalModel.php');
+include ("config/database.php");
 
-$mail = "antoinefl.mrc@gmail.com";
+$login = "toto";
+$mail = "noltuteltu@enayu.com";
+$name = "Tototo42";
+$pass = "Tototo42";
 
-ft_activation_mail($mail);
-?>
+ft_user_new($login, $mail, $name, $pass);

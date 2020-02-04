@@ -20,8 +20,8 @@
                     <input type="text" placeholder="Rechercher">
                 </div>
                 <div class="log-btns">
-                    <a href="./view/login.php"><p>Log in</p></a>
-                    <a href="../subscription.php"><p>Sign up</p></a>
+                    <a href="http://localhost:8080/camagru/view/login.php"><p>Log in</p></a>
+                    <a href="http://localhost:8080/camagru/subscription.php"><p>Sign up</p></a>
                 </div>
             </nav>
     </div>
