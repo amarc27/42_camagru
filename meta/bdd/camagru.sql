@@ -2,8 +2,8 @@
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le :  jeu. 23 jan. 2020 à 09:58
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  mar. 04 fév. 2020 à 10:51
 -- Version du serveur :  5.6.43
 -- Version de PHP :  5.6.40
 
@@ -25,34 +25,38 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Structure de la table `user`
 --
 
-CREATE TABLE `users` (
-  `pseudo` varchar(12) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `mail` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `inscription_date` datetime NOT NULL
+  `login` varchar(12) NOT NULL,
+  `mail` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `active` enum('0','1') NOT NULL DEFAULT '0',
+  `profile` varchar(255) NOT NULL DEFAULT './public/icons/profile.png',
+  `bio` text,
+  `activation_key` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `users`
+-- Déchargement des données de la table `user`
 --
 
-INSERT INTO `users` (`pseudo`, `name`, `mail`, `password`, `id`, `inscription_date`) VALUES
-('amarc', 'Antoine Marc', 'amarc@student.42.fr', 'toto', 1, '2020-01-23 12:00:00'),
-('tonton', 'Xavier Niel', 'tonton@42.fr', 'helloworld', 2, '2019-09-19 00:00:00');
+INSERT INTO `user` (`id`, `login`, `mail`, `name`, `pass`, `active`, `profile`, `bio`, `activation_key`) VALUES
+(1, 'amarc', 'amarc@student.42.com', 'Antoine Marc', 'toto', '0', './public/icons/profile.png', NULL, '0'),
+(65, 'toto', 'conodo6407@reptech.org', 'Tototo42', '$2y$10$QT9f6cJYAp/zUhJnhAbDT.QtlUJqgwZ86osJCl80CUrRqDTkwMTla', '1', './public/icons/profile.png', NULL, 'f701467c8871e5ffe374eaebff977ef1'),
+(71, 'FourtyTwo', 'mokitib266@allmtr.com', 'FourtyTwo42', '$2y$10$.672zF.j.aAXV81JMdJYDez1rSu9MwRICfzzG9zIkyzqiXJy4FpAm', '1', './public/icons/profile.png', NULL, '81314bc5e002407791506868bb4a826b');
 
 --
 -- Index pour les tables déchargées
 --
 
 --
--- Index pour la table `users`
+-- Index pour la table `user`
 --
-ALTER TABLE `users`
+ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -60,10 +64,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT pour la table `user`
 --
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
