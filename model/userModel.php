@@ -50,33 +50,27 @@ function ft_user_new($login, $mail, $name, $pass)
 	$sql->bindParam("name", $name, PDO::PARAM_STR);
 	$sql->execute();
 	$db = null;
-	if(ft_mod_pass($login, $pass) == "tata")
-		echo "SUCCESS MOD_PASS";
-		// ft_activation_mail($login, $mail, $activation_key);
-	if(ft_activation_mail($mail) == "titi")
-		echo "SUCCESS ACTIV_MAIL";
-	return "toto";
+	ft_mod_pass($login, $pass);
+	ft_activation_mail($login, $mail, $activation_key);
 }
 
-// function ft_activation_mail($login, $mail, $activation_key)
-function ft_activation_mail($mail)
+function ft_activation_mail($login, $mail, $activation_key)
 {
-	// $header = 'MIME-Version: 1.0'."\n".'Content-type: text/plain'."\n"."From: Camagru@contact.com"."\n";
+	$header = 'MIME-Version: 1.0'."\n".'Content-type: text/plain'."\n"."From: Camagru@contact.com"."\n";
 	$subject = "Camagru : activez votre compte"."\n";
-	// $link = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
-	// $link = str_replace("subscription.php", "", $link);
-	// $link .='activation.php?log='.urlencode($login).'&key='.urlencode($activation_key);
+	$link = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
+	$link = str_replace("subscription.php", "", $link);
+	$link .='activation.php?log='.urlencode($login).'&key='.urlencode($activation_key);
 
 	$message = "Bienvenue sur Camagru"."\n\n";
-	// $message .="Pour activer votre compte veuillez cliquer sur le lien ci dessous."."\n\n";
-	// $message .= $link;
-	// $message .="\n\n"."---------------"."\n";
-	// $message .="Ceci est un mail automatique, Merci de ne pas y répondre.";
+	$message .="Pour activer votre compte veuillez cliquer sur le lien ci dessous."."\n\n";
+	$message .= $link;
+	$message .="\n\n"."---------------"."\n";
+	$message .="Ceci est un mail automatique, Merci de ne pas y répondre.";
 	if (!(mail($mail, $subject, $message)))
 	{
 		$_SESSION['error'] = "Une erreur s&#39;est produite lors de l&#39;envoi du mail de confirmation.<br/> Veuillez recommencer la proc&eacute;dure";
 	}
-	return "titi";
 }
 
 function ft_mod_pass($login, $new_pass)
@@ -90,5 +84,4 @@ function ft_mod_pass($login, $new_pass)
 	$sql->execute();
 	$db = null;
 	$_SESSION['error'] = "Mot de passe modifi&eacute;";
-	return "tata";
 }

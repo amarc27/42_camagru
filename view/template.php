@@ -1,3 +1,7 @@
+<?php
+$srcDIR = "http://".$_SERVER['DOCUMENT_ROOT'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,13 +25,13 @@
                 </div>
                 <div class="log-btns">
                     <a href="http://localhost:8080/camagru/view/login.php"><p>Log in</p></a>
-                    <a href="http://localhost:8080/camagru/subscription.php"><p>Sign up</p></a>
+                    <a href=<?php $srcDIR."subscription.php"?>><p>Sign up</p></a>
                 </div>
             </nav>
     </div>
     
     <?= $content ?>
-
+    
     <footer>
         <p>Camagru 2020 | Made by amarc</p>
     </footer>
