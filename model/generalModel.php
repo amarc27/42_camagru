@@ -28,10 +28,9 @@ function get_profile($login)
 	return $res; 
 }
 
-function ft_hash($id, $passwd)
+function hasher($passwd)
 {
-	return password_hash($passwd, PASSWORD_BCRYPT);
-	// return hash('sha256', $id).hash('whirlpool', $passwd);
+	return password_hash($passwd, PASSWORD_DEFAULT);
 }
 
 function ft_error()

@@ -137,7 +137,7 @@ footer p {
 /***********/
 /* SIGN UP */
 /***********/
-.subscription-page {
+.log-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -151,7 +151,7 @@ footer p {
     margin-top: 60px;
 }
 
-.subscription-page > h1 {
+.log-page > h1 {
     margin: 20px 0px;
     font-family: 'Pacifico', cursive;
     font-weight: 400;
@@ -159,7 +159,7 @@ footer p {
     text-align: center;
 }
 
-.subscription-page > h3 {
+.log-page > h3 {
     margin: 20px 0px;
     text-align: center;
     color: #999999;

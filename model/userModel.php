@@ -74,8 +74,7 @@ function ft_activation_mail($login, $mail, $activation_key)
 function ft_mod_pass($login, $new_pass)
 {
 	$db = db_connect();
-	$profile = get_profile($login);
-	$passwd = ft_hash($profile['id'], $new_pass);
+	$passwd = hasher($new_pass);
 	$sql = $db->prepare("UPDATE user SET pass=:new WHERE login=:login");
 	$sql->bindParam(":new", $passwd, PDO::PARAM_STR);
 	$sql->bindParam(":login", $login, PDO::PARAM_STR);
@@ -108,4 +107,39 @@ function modify_profile($login, $field, $value)
 	$sql->execute();
 	$db = null;
 	return true;
+}
+
+function check_user($login, $passwd)
+{
+	$db = db_connect();
+
+	$sql = $db->prepare('SELECT * FROM user WHERE login = :login');
+	$sql->bindParam(':login', $login, PDO::PARAM_STR);
+	$sql->execute();
+	$data = $sql->fetch();
+
+	if ($data == "")
+	{
+		$_SESSION['error'] = "Ce compte n'existe pas";
+		$db = null;
+		return false;
+	}
+	else if (password_verify($passwd, $data['pass']) == false)
+	{
+		$_SESSION['error'] = "Mot de passe incorrect";
+		$db = null;
+		return false;
+	}
+	else if ($data['active'] === '0')
+	{
+		$_SESSION['error'] = "Le compte n'a pas été activé";
+		$db = null;
+		return false;
+	}
+	else
+	{
+		$_SESSION['login'] = $login;
+		$db = null;
+		return true;
+	}
 }

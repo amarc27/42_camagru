@@ -17,7 +17,7 @@ if (isset($_POST['submit']))
 if ((empty($_POST['login']) || empty($_POST['mail']) || empty($_POST['name']) || empty($_POST['passwd']) || empty($_POST['passwd2'])) && isset($_POST['submit']))
 	$_SESSION['error'] = "Champs incomplets";
 
-else if (isset($_POST['login']) && isset($_POST['mail']) && isset($_POST['name']) && isset($_POST['passwd']) && isset($_POST['passwd2']) && isset($_POST['submit']) )
+else if (isset($_POST['login']) && isset($_POST['mail']) && isset($_POST['name']) && isset($_POST['passwd']) && isset($_POST['passwd2']) && isset($_POST['submit']))
 {
 	if (!ft_login_exist($_POST['login']) && !ft_mail_exist($_POST['mail']))
 	{

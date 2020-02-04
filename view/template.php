@@ -1,5 +1,5 @@
 <?php
-$srcDIR = "http://".$_SERVER['HTTP_HOST']."/camagru";
+    $srcDIR = "http://".$_SERVER['HTTP_HOST']."/camagru";
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ $srcDIR = "http://".$_SERVER['HTTP_HOST']."/camagru";
                 <div class="logo">
                     <img src="./public/images/iconmonstr-instagram-11.svg" class="img-logo" alt="Logo">
                     <hr>
-                    <p id="text-logo">Camagru</p>
+                    <p id="text-logo"><a href=<?php echo $srcDIR."/index.php" ?>>Camagru</a></p>
                 </div>
                 <div class="search-bar">
                     <input type="text" placeholder="Rechercher">
