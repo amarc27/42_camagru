@@ -2,7 +2,7 @@
     ob_start();
     $srcDIR = "http://".$_SERVER['HTTP_HOST']."/camagru";
 ?>
-    <section id="content">
+<section id="content">
     <div class="log-page">
         <h1>Camagru</h1>
         <h3>Connectez-vous pour voir les photos de vos amis</h3>
@@ -19,5 +19,6 @@
 
 <?php
     $content = ob_get_clean();
+    $title = "Login &#8226; Camagru";
     require('view/template.php');
 ?>

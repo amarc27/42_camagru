@@ -10,5 +10,6 @@
 
 <?php
     $content = ob_get_clean();
+    $title = "Activate account &bull Camagru";
     require('template.php');
 ?>

@@ -1,18 +1,10 @@
-<?php
-    $srcDIR = "http://".$_SERVER['HTTP_HOST']."/camagru";
-    $account_link = $srcDIR."/account.php";
-    $signup_link = $srcDIR."/signup.php";
-    $login_link = $srcDIR."/login.php";
-    $logout_link = $srcDIR."/logout.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?= $title ?></title>
+    <title>Camagru</title>
     <link rel="stylesheet" href="./public/css/style.css">
     <link rel="shortcut icon" href="./public/images/insta.ico" type="image/x-icon">
 </head>
@@ -42,11 +34,20 @@
             </nav>
     </div>
     
-    <?= $content ?>
+    <section id="content">
+        <article id="photo-section">
+            <div id="photo-frame">
+                
+            </div>
+            <div id="sticker-frame">
 
-
+            </div>
+        </article>
+        <article id="feed">
+        
+        </article>
+    </section>
     <div class="logs">
-    <hr>
         <p><?php print_r($_SESSION); ?></p>
         <p><?php print_r($_COOKIE); ?></p>
     </div>

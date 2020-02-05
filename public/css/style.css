@@ -229,3 +229,41 @@ section .activate-frame {
     font-size: 15px;
     font-weight: 500;
 }
+
+/***********/
+/* PROFILE */
+/***********/
+.profile-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile-picture {
+    width: 16%;
+    margin: 0 30px 0px 30px;
+}
+
+.profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 1px solid gray;
+}
+
+.profile-infos {
+    width: 84%;
+}
+
+.profile-infos .main {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.profile-infos .main p {
+    margin: 0px;
+    margin-right: 30px;
+    font-size: 24px;
+}

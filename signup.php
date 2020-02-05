@@ -42,4 +42,3 @@ else if (isset($_POST['login']) && isset($_POST['mail']) && isset($_POST['name']
 $error = ft_error();
 
 require('./view/signupView.php');
-?>

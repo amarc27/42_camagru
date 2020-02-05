@@ -139,7 +139,6 @@ function check_user($login, $passwd)
 	else
 	{
 		$_SESSION['login'] = $login;
-		$_SESSION['logged_in'] = true;
 		$db = null;
 		return true;
 	}

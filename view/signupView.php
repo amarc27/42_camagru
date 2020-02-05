@@ -20,5 +20,8 @@
     </div>
 </section>
 
-<?php $content = ob_get_clean(); ?>
-<?php require('./view/template.php'); ?>
+<?php
+    $content = ob_get_clean();
+    $title = "Signup &#8226; Camagru";
+    require('./view/template.php');
+?>
