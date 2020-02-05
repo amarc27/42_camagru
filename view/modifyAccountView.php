@@ -1,27 +1,61 @@
-<?php ob_start(); ?>
+<?php
+    ob_start();
+    $srcDIR = "http://".$_SERVER['HTTP_HOST']."/camagru";
+    $error = "";
+?>
 
 <section id="content">
-    <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
-        <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+    <div class="modify-account">
+        <div class="modify-form">
+            <h3>Modifier vos informations</h3>
+            <p style="font-weight:bold; color: #DA2C38"><?= $error ?></p>
+            <form class="subscription-form" action="" method="post">
+                <table>
+                    <tr>
+                        <td><p>Nom d'utilisateur</p></td>
+                        <td><input type="text" name="login" value=<?= $profile['login']; ?> required maxlength="12"></td>
+                    </tr>
+                    <tr>
+                            <td><p>Email</p></td>
+                            <td><input type="email" name="mail" value=<?= $profile['mail']; ?> required maxlength="40"></td>
+                    </tr>
+                    <tr>
+                        <td><p>Nom complet</p></td>
+                        <td><input type="text" name="name" value=<?= $profile['name']; ?> required maxlength="15"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" name="submit" value="Sauvegarder"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <br>
+        <div class="modify-form">
+            <h3>Modifier vos informations</h3>
+            <p style="font-weight:bold; color: #DA2C38"><?= $error ?></p>
+            <form class="subscription-form" action="" method="post">
+                <table>
+                    <tr>
+                        <td><p>Nom d'utilisateur</p></td>
+                        <td><input type="text" name="login" value=<?= $profile['login']; ?> required maxlength="12"></td>
+                    </tr>
+                    <tr>
+                            <td><p>Email</p></td>
+                            <td><input type="email" name="mail" value=<?= $profile['mail']; ?> required maxlength="40"></td>
+                    </tr>
+                    <tr>
+                        <td><p>Nom complet</p></td>
+                        <td><input type="text" name="name" value=<?= $profile['name']; ?> required maxlength="15"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" name="submit" value="Sauvegarder"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
     </div>
-
-    <div id="London" class="tabcontent">
-        <h3>London</h3>
-        <p>London is the capital city of England.</p>
-    </div>
-
-    <div id="Paris" class="tabcontent">
-        <h3>Paris</h3>
-        <p>Paris is the capital of France.</p> 
-    </div>
-
-    <div id="Tokyo" class="tabcontent">
-        <h3>Tokyo</h3>
-        <p>Tokyo is the capital of Japan.</p>
-    </div>
-    <script src="public/js/accountTabs.js"></script>
 </section>
 
 <?php

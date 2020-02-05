@@ -43,13 +43,7 @@
     </div>
     
     <?= $content ?>
-
-
-    <div class="logs">
-    <hr>
-        <p><?php print_r($_SESSION); ?></p>
-        <p><?php print_r($_COOKIE); ?></p>
-    </div>
+    
     <footer>
         <p>Camagru 2020 | Made by amarc</p>
     </footer>
