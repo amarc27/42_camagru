@@ -1,5 +1,8 @@
 <?php
     $srcDIR = "http://".$_SERVER['HTTP_HOST']."/camagru";
+    $account_link = $srcDIR."/account.php";
+    $signup_link = $srcDIR."/signup.php";
+    $login_link = $srcDIR."/login.php";
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +16,7 @@
     <link rel="shortcut icon" href="./public/images/insta.ico" type="image/x-icon">
 </head>
 <body>
+    <?php print_r($_SESSION); ?>
     <div id="navbar">
             <nav>
                 <div class="logo">
@@ -24,8 +28,19 @@
                     <input type="text" placeholder="Rechercher">
                 </div>
                 <div class="log-btns">
-                    <a href=<?php echo $srcDIR."/login.php"?>><p>Log in</p></a>
-                    <a href=<?php echo $srcDIR."/signup.php"?>><p>Sign up</p></a>
+                <?php
+                if ($_SESSION['logged_in'] == true)
+                {
+                    echo "<a href=\"$account_link\"><p>Account</p></a>";
+                    echo "<a href=\"javascript:void(0)\" onClick=\"logout()\"><p>Logout</p></a>";
+                }
+
+                else
+                {
+                    echo "<a href=\"$signup_link\"><p>Signup</p></a>";
+                    echo "<a href=\"$login_link\"><p>Login</p></a>";
+                }
+                ?>
                 </div>
             </nav>
     </div>
@@ -35,5 +50,6 @@
     <footer>
         <p>Camagru 2020 | Made by amarc</p>
     </footer>
+    <script src="./public/js/logout.js"></script>
 </body>
 </html>

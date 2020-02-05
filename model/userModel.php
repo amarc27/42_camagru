@@ -59,8 +59,8 @@ function ft_activation_mail($login, $mail, $activation_key)
 	// $header = 'MIME-Version: 1.0'."\n".'Content-type: text/plain'."\n"."From: Camagru@contact.com"."\n";
 	$subject = "📥 Camagru : activez votre compte"."\n";
 	$link = "http://".$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
-	$link = str_replace("subscription.php", "", $link);
-	$link .='activation.php?log='.urlencode($login).'&key='.urlencode($activation_key);
+	$link = str_replace("signup.php", "", $link);
+	$link .='activate.php?log='.urlencode($login).'&key='.urlencode($activation_key);
 
 	$message = "Bienvenue sur Camagru !"."\n\n";
 	$message .="Pour activer votre compte veuillez cliquer sur le lien ci-dessous :"."\n\n";
@@ -139,6 +139,7 @@ function check_user($login, $passwd)
 	else
 	{
 		$_SESSION['login'] = $login;
+		$_SESSION['logged_in'] = true;
 		$db = null;
 		return true;
 	}
