@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 04 fév. 2020 à 10:51
+-- Généré le :  mer. 05 fév. 2020 à 09:34
 -- Version du serveur :  5.6.43
 -- Version de PHP :  5.6.40
 
@@ -31,23 +31,22 @@ SET time_zone = "+00:00";
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `login` varchar(12) NOT NULL,
-  `mail` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `mail` varchar(40) NOT NULL,
+  `name` varchar(15) NOT NULL,
   `pass` varchar(255) NOT NULL,
   `active` enum('0','1') NOT NULL DEFAULT '0',
-  `profile` varchar(255) NOT NULL DEFAULT './public/icons/profile.png',
-  `bio` text,
-  `activation_key` varchar(32) NOT NULL
+  `profile_pic` varchar(255) NOT NULL DEFAULT './public/icons/profile.png',
+  `bio` varchar(140) NOT NULL,
+  `activation_key` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id`, `login`, `mail`, `name`, `pass`, `active`, `profile`, `bio`, `activation_key`) VALUES
-(1, 'amarc', 'amarc@student.42.com', 'Antoine Marc', 'toto', '0', './public/icons/profile.png', NULL, '0'),
-(65, 'toto', 'conodo6407@reptech.org', 'Tototo42', '$2y$10$QT9f6cJYAp/zUhJnhAbDT.QtlUJqgwZ86osJCl80CUrRqDTkwMTla', '1', './public/icons/profile.png', NULL, 'f701467c8871e5ffe374eaebff977ef1'),
-(71, 'FourtyTwo', 'mokitib266@allmtr.com', 'FourtyTwo42', '$2y$10$.672zF.j.aAXV81JMdJYDez1rSu9MwRICfzzG9zIkyzqiXJy4FpAm', '1', './public/icons/profile.png', NULL, '81314bc5e002407791506868bb4a826b');
+INSERT INTO `user` (`id`, `login`, `mail`, `name`, `pass`, `active`, `profile_pic`, `bio`, `activation_key`) VALUES
+(1, 'amarc', 'amarc@student.42.com', 'Antoine Marc', 'toto', '0', './public/images/profile.png', '', '0'),
+(76, 'toto', 'mitiva9807@mailboxt.net', 'Tototo42', '$2y$10$xsTUyy527JaA8mNDe.r/UOd8q9.5Me5yXKN91XHIzRorDty4u0aCq', '1', './public/images/profile.png', 'Co-Founder, The Family\r\nthefamily.co', '0cedde00216192c3c7bef3ec268a5d52');
 
 --
 -- Index pour les tables déchargées
@@ -67,7 +66,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
