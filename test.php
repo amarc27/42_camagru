@@ -1,7 +1,7 @@
 <?php
-$toto = '';
+$str = 'foobarbaz';
 
-if (!empty($toto))
-    echo "La variable toto existe";
+if (preg_match('/(\t|\s|\n|\v|\f|\r|\0)+/', $str) == true)
+    echo "machine invalide";
 else
-    echo "La variable n'existe pas";
+    echo "good work boys";

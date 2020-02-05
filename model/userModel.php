@@ -143,3 +143,11 @@ function check_user($login, $passwd)
 		return true;
 	}
 }
+
+function there_are_spaces($str)
+{
+	if (preg_match('/(\t|\s|\n|\v|\f|\r|\0)+/', $str) == true)
+		return true;
+	else
+		return false;
+}
