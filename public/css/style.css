@@ -267,3 +267,9 @@ section .activate-frame {
     margin-right: 30px;
     font-size: 24px;
 }
+
+.profile-infos .main a {
+    border: 1px solid lightgray;
+    padding: 5px;
+    border-radius: 4px;
+}
