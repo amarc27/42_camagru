@@ -45,6 +45,18 @@ function ft_error()
 		return "";
 }
 
+function lightModif()
+{
+	if(isset($_SESSION['lightModif']))
+	{
+		$tmp = $_SESSION['lightModif'];
+		$_SESSION['lightModif'] = NULL;
+		return $tmp;
+	}
+	else
+		return "";
+}
+
 function password_secure($password)
 {
 

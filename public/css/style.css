@@ -181,14 +181,14 @@ footer p {
     font-size: 12px;
 }
 
-.subscription-form input[name=submit]{
+.subscription-form input[type=submit]{
     background-color: #3897f0;
     color: #fff;
     border: 1px solid #FAFAFA;
     border-radius: 4px;
 }
 
-.subscription-form input[name=submit]:hover{
+.subscription-form input[type=submit]:hover{
     background-color: lightsalmon;
     border: 1px solid #FAFAFA;
 }

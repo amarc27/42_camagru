@@ -43,7 +43,7 @@
     </div>
     
     <?= $content ?>
-    
+
     <footer>
         <p>Camagru 2020 | Made by amarc</p>
     </footer>

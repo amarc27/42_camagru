@@ -1,14 +1,13 @@
 <?php
     ob_start();
     $srcDIR = "http://".$_SERVER['HTTP_HOST']."/camagru";
-    $error = "";
 ?>
 
 <section id="content">
     <div class="modify-account">
         <div class="modify-form">
             <h3>Modifier le profil</h3>
-            <p style="font-weight:bold; color: #DA2C38"><?= $error ?></p>
+            <p style="font-weight:bold; text-align: center; color: #00B200"><?= $lightModif ?></p>
             <form class="subscription-form" action="" method="post">
                 <table>
                     <tr>
@@ -29,7 +28,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="submit" name="submit" value="Sauvegarder"></td>
+                        <td><input type="submit" name="submit-main" value="Sauvegarder"></td>
                     </tr>
                 </table>
             </form>
@@ -37,7 +36,7 @@
         <br>
         <div class="modify-form password-form">
             <h3>Changer de mot de passe</h3>
-            <p style="font-weight:bold; color: #DA2C38"><?= $error ?></p>
+            <p style="font-weight:bold; text-align: center; color: #DA2C38"><?= $error ?></p>
             <form class="subscription-form" action="" method="post">
                 <table>
                     <tr>
@@ -54,7 +53,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="submit" name="submit" value="Modifier le mot de passe"></td>
+                        <td><input type="submit" name="submit-new-pass" value="Modifier le mot de passe"></td>
                     </tr>
                 </table>
             </form>

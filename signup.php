@@ -13,8 +13,6 @@ if (isset($_POST['submit']))
 	$_POST['passwd2'] = strip_tags($_POST['passwd2']);
 }
 
-print_r($_POST);
-
 if ((empty($_POST['login']) || empty($_POST['mail']) || empty($_POST['name']) || empty($_POST['passwd']) || empty($_POST['passwd2'])) && isset($_POST['submit']))
 	$_SESSION['error'] = "Champs incomplets";
 

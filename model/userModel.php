@@ -1,6 +1,6 @@
 <?php
 
-function ft_login_exist($login)
+function ft_login_exist($login, $notif_type)
 {
 	$db = db_connect();
 	
@@ -11,14 +11,18 @@ function ft_login_exist($login)
 	$db = null;
 	if ($data == "")
 		return false;
+	else if ($login == $_SESSION['login'])
+	{
+		return false;
+	}
 	else
 	{
-		$_SESSION['error'] = "Ce nom d'utilisateur existe d&eacute;&agrave;.";
+		$_SESSION[$notif_type] = "Ce nom d'utilisateur existe d&eacute;&agrave;.";
 		return true;
 	}
 }
 
-function ft_mail_exist($mail)
+function ft_mail_exist($mail, $notif_type)
 {
 	$db = db_connect();
 	$sql = $db->prepare("SELECT * FROM user WHERE mail=:mail");
@@ -28,9 +32,13 @@ function ft_mail_exist($mail)
 	$db = null;
 	if ($data == "")
 		return false;
+	else if ($mail == $_SESSION['mail'])
+	{
+		return false;
+	}
 	else
 	{
-		$_SESSION['error'] = "Cette adresse mail existe d&eacute;&agrave;.";
+		$_SESSION[$notif_type] = "Cette adresse mail existe d&eacute;&agrave;.";
 		return true;
 	}
 }
@@ -54,12 +62,57 @@ function ft_user_new($login, $mail, $name, $pass)
 	ft_activation_mail($login, $mail, $activation_key);
 }
 
+function edit_user($login, $mail, $name, $bio)
+{
+	$db = db_connect();
+
+	$profile = get_profile($_SESSION['login']);
+	
+	$login = htmlspecialchars($login);
+	$mail = htmlspecialchars($mail);
+	$name = htmlspecialchars($name);
+	$bio = htmlspecialchars($bio);
+	
+	// $sql = $db->prepare("UPDATE user SET login = :login, mail = :mail, name = :name, bio = :bio WHERE id = :id");
+	$sql = $db->prepare('UPDATE user SET login = :login, mail = :mail, name = :name, bio = :bio WHERE id = :id');
+	$sql->bindParam(":login", $login, PDO::PARAM_STR);
+	$sql->bindParam(":mail", $mail, PDO::PARAM_STR);
+	$sql->bindParam(":name", $name, PDO::PARAM_STR);
+	$sql->bindParam(":bio", $bio, PDO::PARAM_STR);
+	$sql->bindParam(":id", $profile['id'], PDO::PARAM_INT);
+	$sql->execute();
+	$db = null;
+}
+
+function edit_user_activate($login, $mail, $name, $bio)
+{
+	$db = db_connect();
+	
+	$profile = get_profile($_SESSION['login']);
+	
+	$login = htmlspecialchars($login);
+	$mail = htmlspecialchars($mail);
+	$name = htmlspecialchars($name);
+	$bio = htmlspecialchars($bio);
+	
+	$activation_key = md5(microtime(TRUE)*100000);
+	$sql = $db->prepare("UPDATE user SET login = :login, mail = :mail, name = :name, bio = :bio, activation_key = :activation_key WHERE id = :id");
+	$sql->bindParam("login", $login, PDO::PARAM_STR);
+	$sql->bindParam("mail", $mail, PDO::PARAM_STR);
+	$sql->bindParam("name", $name, PDO::PARAM_STR);
+	$sql->bindParam(":bio", $bio, PDO::PARAM_STR);
+	$sql->bindParam(":activation_key", $activation_key, PDO::PARAM_STR);
+	$sql->bindParam(":id", $profile['id'], PDO::PARAM_INT);
+	$sql->execute();
+	disable_account($_SESSION['login']);
+	$db = null;
+	ft_activation_mail($login, $mail, $activation_key);
+}
+
 function ft_activation_mail($login, $mail, $activation_key)
 {
-	// $header = 'MIME-Version: 1.0'."\n".'Content-type: text/plain'."\n"."From: Camagru@contact.com"."\n";
 	$subject = "📥 Camagru : activez votre compte"."\n";
-	$link = "http://".$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
-	$link = str_replace("signup.php", "", $link);
+	$link = "http://".$_SERVER['HTTP_HOST']."/camagru/";
 	$link .='activate.php?log='.urlencode($login).'&key='.urlencode($activation_key);
 
 	$message = "Bienvenue sur Camagru !"."\n\n";
@@ -94,6 +147,15 @@ function activate_account($login)
 	modify_profile($login, 'activation_key', $key);
 }
 
+function disable_account($login)
+{
+	$db = db_connect();
+	$sql = $db->prepare("UPDATE user SET active = '0' WHERE login = :login");
+	$sql->bindParam(":login", $login, PDO::PARAM_STR);
+	$sql->execute();
+	$db = null;
+}
+
 function modify_profile($login, $field, $value)
 {
 	$db = db_connect();
@@ -112,6 +174,8 @@ function modify_profile($login, $field, $value)
 function check_user($login, $passwd)
 {
 	$db = db_connect();
+
+	$profile = get_profile($login);
 
 	$sql = $db->prepare('SELECT * FROM user WHERE login = :login');
 	$sql->bindParam(':login', $login, PDO::PARAM_STR);
@@ -132,13 +196,14 @@ function check_user($login, $passwd)
 	}
 	else if ($data['active'] === '0')
 	{
-		$_SESSION['error'] = "Le compte n'a pas été activé";
+		$_SESSION['error'] = "Le compte n'a pas été activé, regardez vos mails !";
 		$db = null;
 		return false;
 	}
 	else
 	{
 		$_SESSION['login'] = $login;
+		$_SESSION['mail'] = $profile['mail'];
 		$db = null;
 		return true;
 	}
