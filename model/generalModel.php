@@ -21,7 +21,7 @@ function get_profile($login)
 {
 	$db = db_connect();
 	$sql = $db->prepare("SELECT * FROM user WHERE login = :login");
-    $sql->bindParam("login", $login, PDO::PARAM_STR);
+    $sql->bindParam(":login", $login, PDO::PARAM_STR);
 	$sql->execute();
 	$res = $sql->fetch();
 	$db = null;

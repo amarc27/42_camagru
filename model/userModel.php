@@ -58,7 +58,7 @@ function ft_user_new($login, $mail, $name, $pass)
 	$sql->bindParam("name", $name, PDO::PARAM_STR);
 	$sql->execute();
 	$db = null;
-	ft_mod_pass($login, $pass);
+	edit_password($login, $pass);
 	ft_activation_mail($login, $mail, $activation_key);
 }
 
@@ -109,6 +109,19 @@ function edit_user_activate($login, $mail, $name, $bio)
 	ft_activation_mail($login, $mail, $activation_key);
 }
 
+function check_old_passwd($login, $oldPasswd)
+{
+	$profile = get_profile($login);
+	$oldPasswd = htmlspecialchars($oldPasswd);
+	if (password_verify($oldPasswd, $profile['pass']) == true)
+	{
+		$db = null;
+		return true;
+	}
+	else
+		return false;
+}
+
 function ft_activation_mail($login, $mail, $activation_key)
 {
 	$subject = "📥 Camagru : activez votre compte"."\n";
@@ -124,7 +137,7 @@ function ft_activation_mail($login, $mail, $activation_key)
 	}
 }
 
-function ft_mod_pass($login, $new_pass)
+function edit_password($login, $new_pass)
 {
 	$db = db_connect();
 	$passwd = hasher($new_pass);
@@ -175,8 +188,6 @@ function check_user($login, $passwd)
 {
 	$db = db_connect();
 
-	$profile = get_profile($login);
-
 	$sql = $db->prepare('SELECT * FROM user WHERE login = :login');
 	$sql->bindParam(':login', $login, PDO::PARAM_STR);
 	$sql->execute();
@@ -203,7 +214,7 @@ function check_user($login, $passwd)
 	else
 	{
 		$_SESSION['login'] = $login;
-		$_SESSION['mail'] = $profile['mail'];
+		$_SESSION['mail'] = $data['mail'];
 		$db = null;
 		return true;
 	}
