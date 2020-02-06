@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 05 fév. 2020 à 09:34
+-- Généré le :  jeu. 06 fév. 2020 à 08:30
 -- Version du serveur :  5.6.43
 -- Version de PHP :  5.6.40
 
@@ -35,7 +35,7 @@ CREATE TABLE `user` (
   `name` varchar(15) NOT NULL,
   `pass` varchar(255) NOT NULL,
   `active` enum('0','1') NOT NULL DEFAULT '0',
-  `profile_pic` varchar(255) NOT NULL DEFAULT './public/icons/profile.png',
+  `profile_pic` varchar(255) NOT NULL DEFAULT './public/images/profile.png',
   `bio` varchar(140) NOT NULL,
   `activation_key` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -46,7 +46,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `login`, `mail`, `name`, `pass`, `active`, `profile_pic`, `bio`, `activation_key`) VALUES
 (1, 'amarc', 'amarc@student.42.com', 'Antoine Marc', 'toto', '0', './public/images/profile.png', '', '0'),
-(76, 'toto', 'mitiva9807@mailboxt.net', 'Tototo42', '$2y$10$xsTUyy527JaA8mNDe.r/UOd8q9.5Me5yXKN91XHIzRorDty4u0aCq', '1', './public/images/profile.png', 'Co-Founder, The Family\r\nthefamily.co', '0cedde00216192c3c7bef3ec268a5d52');
+(76, 'toto', 'mitiva9807@mailboxt.net', 'Tototo42', '$2y$10$xsTUyy527JaA8mNDe.r/UOd8q9.5Me5yXKN91XHIzRorDty4u0aCq', '1', './public/images/profile.png', 'Co-Founder, Gaston', '0cedde00216192c3c7bef3ec268a5d52'),
+(77, 'titi', 'bocit57697@nwesmail.com', 'Antoine Toto', '$2y$10$O8RrS6F8e.NS2/Ja/j1.MOJog.xt73sgs8QKhnFAGqjZvriERJtpO', '1', './public/images/profile.png', 'Bonjour, Lorem ipsum. Toto est a la playaaaaaa !', '85f68bbae423bbdd18f366058d6edb46');
 
 --
 -- Index pour les tables déchargées
@@ -66,7 +67,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
