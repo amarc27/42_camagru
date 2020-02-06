@@ -171,7 +171,7 @@ footer p {
     justify-content: center;
 }
 
-.subscription-form input {
+.subscription-form input, textarea {
     margin: 10px 0px;
     padding: 10px;
     border: 1px solid #efefef;
@@ -303,7 +303,11 @@ section .activate-frame {
     border-radius: 1px;
     background-color: #FFF;
     margin: 0px 10px;
-    margin-top: 60px;
+    margin-top: 10px;
+}
+
+.password-form {
+    margin-top: 50px;
 }
 
 .modify-form > h3 {
@@ -316,11 +320,15 @@ section .activate-frame {
 .modify-form table {
     display: flex;
     flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
 }
 
 .modify-form form {
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
 }
 
 .modify-form form td p {
@@ -335,4 +343,8 @@ section .activate-frame {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.modify-form input, textarea {
+    width: 300px;
 }
