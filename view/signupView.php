@@ -6,7 +6,7 @@
 <section id="content">
     <div class="log-page">
         <h1>Camagru</h1>
-        <h3>Inscrivez-vous pour voir les photos de vos amis</h3>
+        <h3>Log in to see photos and videos from your friends</h3>
         <p style="font-weight:bold; color: #DA2C38"><?= $error ?></p>
         <form class="subscription-form" action="" method="post">
             <input type="text" name="login" placeholder="Nom d'utilisateur" required maxlength="12">
@@ -16,7 +16,7 @@
             <input type="password" name="passwd2" placeholder="Confirmation de mot de passe" required>
             <input type="submit" name="submit" value="S'inscrire">
         </form>
-        <p>Vous avez déjà un compte ? <a href=<?php echo $srcDIR."/login.php"?>>Connectez-vous</a></p>
+        <p>Have an account ? <a href=<?php echo $srcDIR."/login.php"?>>Log in</a></p>
     </div>
 </section>
 

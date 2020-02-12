@@ -12,12 +12,10 @@ function ft_login_exist($login, $notif_type)
 	if ($data == "")
 		return false;
 	else if ($login == $_SESSION['login'])
-	{
 		return false;
-	}
-	else
+	else if ($login == $data->login)
 	{
-		$_SESSION[$notif_type] = "Ce nom d'utilisateur existe d&eacute;&agrave;.";
+		$_SESSION[$notif_type] = "This login already exists";
 		return true;
 	}
 }
@@ -33,15 +31,28 @@ function ft_mail_exist($mail, $notif_type)
 	if ($data == "")
 		return false;
 	else if ($mail == $_SESSION['mail'])
-	{
 		return false;
-	}
 	else
 	{
-		$_SESSION[$notif_type] = "Cette adresse mail existe d&eacute;&agrave;.";
+		$_SESSION[$notif_type] = "This email already exists";
 		return true;
 	}
 }
+
+function mail_in_db($mail)
+{
+	$db = db_connect();
+	$sql = $db->prepare("SELECT * FROM user WHERE mail=:mail");
+	$sql->bindParam("mail", $mail, PDO::PARAM_STR);
+	$sql->execute();
+	$data = $sql->fetch(PDO::FETCH_OBJ);
+	$db = null;
+	if ($data == "")
+		return false;
+	else
+		return true;
+}
+
 function ft_user_new($login, $mail, $name, $pass)
 {
 	$db = db_connect();
@@ -50,6 +61,8 @@ function ft_user_new($login, $mail, $name, $pass)
 	$mail = htmlspecialchars($mail);
 	$name = htmlspecialchars($name);
 	$pass = htmlspecialchars($pass);
+
+	$login = strtolower($login);
 	
 	$activation_key = md5(microtime(TRUE)*100000);
 	$sql = $db->prepare("INSERT INTO user (login, mail, name, pass, active, activation_key) VALUES (:login, :mail, :name, '1', '0', '".$activation_key."')");
@@ -104,36 +117,34 @@ function edit_user_activate($login, $mail, $name, $bio)
 	$sql->bindParam(":activation_key", $activation_key, PDO::PARAM_STR);
 	$sql->bindParam(":id", $profile['id'], PDO::PARAM_INT);
 	$sql->execute();
-	disable_account($_SESSION['login']);
 	$db = null;
+	disable_account($_SESSION['login']);
 	ft_activation_mail($login, $mail, $activation_key);
 }
 
-function check_old_passwd($login, $oldPasswd)
+function check_passwd($login, $new_pass)
 {
 	$profile = get_profile($login);
-	$oldPasswd = htmlspecialchars($oldPasswd);
-	if (password_verify($oldPasswd, $profile['pass']) == true)
-	{
-		$db = null;
+	$new_pass = htmlspecialchars($new_pass);
+	if (password_verify($new_pass, $profile['pass']) == true)
 		return true;
-	}
 	else
 		return false;
 }
 
 function ft_activation_mail($login, $mail, $activation_key)
 {
-	$subject = "📥 Camagru : activez votre compte"."\n";
+	$current_time = time();
+	$subject = "📥 Camagru : activate your account"."\n";
 	$link = "http://".$_SERVER['HTTP_HOST']."/camagru/";
-	$link .='activate.php?log='.urlencode($login).'&key='.urlencode($activation_key);
+	$link .='activate.php?log='.urlencode($login).'&key='.urlencode($activation_key).'&time='.urlencode($current_time);
 
-	$message = "Bienvenue sur Camagru !"."\n\n";
-	$message .="Pour activer votre compte veuillez cliquer sur le lien ci-dessous :"."\n\n";
-	$message .= "--> ".$link;
+	$message = "Welcome on Camagru !"."\n\n";
+	$message .="To activate your account, please click on the link below :"."\n\n";
+	$message .= $link;
 	if (!(mail($mail, $subject, $message)))
 	{
-		$_SESSION['error'] = "Une erreur s&#39;est produite lors de l&#39;envoi du mail de confirmation.<br/> Veuillez recommencer la proc&eacute;dure";
+		$_SESSION['error'] = "An error occured when sending the email, please try again";
 	}
 }
 
@@ -146,7 +157,7 @@ function edit_password($login, $new_pass)
 	$sql->bindParam(":login", $login, PDO::PARAM_STR);
 	$sql->execute();
 	$db = null;
-	$_SESSION['error'] = "Mot de passe modifi&eacute;";
+	$_SESSION['error'] = "Password modified";
 }
 
 function activate_account($login)
@@ -184,6 +195,17 @@ function modify_profile($login, $field, $value)
 	return true;
 }
 
+function delete_user($login)
+{
+	$login = htmlspecialchars($login);
+
+	$db = db_connect();
+	$sql = $db->prepare('DELETE FROM user WHERE login = :login');
+	$sql->bindParam(":login", $login, PDO::PARAM_STR);
+	$sql->execute();
+	$db = null;
+}
+
 function check_user($login, $passwd)
 {
 	$db = db_connect();
@@ -195,19 +217,19 @@ function check_user($login, $passwd)
 
 	if ($data == "")
 	{
-		$_SESSION['error'] = "Ce compte n'existe pas";
+		$_SESSION['error'] = "This account does not exist";
 		$db = null;
 		return false;
 	}
 	else if (password_verify($passwd, $data['pass']) == false)
 	{
-		$_SESSION['error'] = "Mot de passe incorrect";
+		$_SESSION['error'] = "Incorrect password";
 		$db = null;
 		return false;
 	}
 	else if ($data['active'] === '0')
 	{
-		$_SESSION['error'] = "Le compte n'a pas été activé, regardez vos mails !";
+		$_SESSION['error'] = "This account has not been activated, please check your emails !";
 		$db = null;
 		return false;
 	}
@@ -226,4 +248,37 @@ function there_are_spaces($str)
 		return true;
 	else
 		return false;
+}
+
+function send_password_reset_mail($mail)
+{
+	$mail = strip_tags($mail);
+
+	$db = db_connect();
+	$sql = $db->prepare('SELECT * FROM user WHERE mail = :mail');
+	$sql->bindParam(':mail', $mail, PDO::PARAM_STR);
+	$sql->execute();
+	$data = $sql->fetch(PDO::FETCH_OBJ);
+	$login = $data->login;
+	$db = null;
+
+	$key = md5(microtime(TRUE)*100000);
+	modify_profile($login, 'activation_key', $key);
+	reset_mail($login, $mail, $key);	
+}
+
+function reset_mail($login, $mail, $key)
+{
+	$current_time = time();
+	$subject = "📥 Camagru : Reset your password"."\n";
+	$link = "http://".$_SERVER['HTTP_HOST']."/camagru/";
+	$link .='resetPasswd.php?log='.urlencode($login).'&key='.urlencode($key).'&time='.urlencode($current_time);
+
+	$message = "Welcome on Camagru !"."\n\n";
+	$message .="to reset your password, please click on the link below :"."\n\n";
+	$message .= $link;
+	if (!(mail($mail, $subject, $message)))
+	{
+		$_SESSION['error'] = "An error occured when sending the email, please try again";
+	}
 }

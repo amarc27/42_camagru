@@ -13,7 +13,7 @@ function db_connect()
 		return $db;
 	}
 	catch (PDOException $e) {
-		echo 'Erreur de connection: ' . $e->getMessage();
+		echo 'Connection error: ' . $e->getMessage();
 	}
 }
 
@@ -62,23 +62,28 @@ function password_secure($password)
 
 	$error = "";
 	if( strlen($password) < 8 ) 
-		$error.= " trop court ";
+		$error.= " too short ";
 		
 	if( !preg_match("#[0-9]+#", $password) )
-		$error.= "ne contenant pas de chiffre ";
+		$error.= "| without numbers ";
 		
 	if( !preg_match("#[a-z]+#", $password) ) 
-		$error.= "sans minuscule ";
+		$error.= "| without lowercase letters ";
 		
 	if( !preg_match("#[A-Z]+#", $password) ) 
-		$error.= "sans majuscule ";
+		$error.= "| without uppercase letters ";
 	
 	if (!empty($error))
 	{
-		$_SESSION['error'] = "Mot de passe ".$error;
+		$_SESSION['error'] = "Password : ".$error;
 		return false;
 	}
 
 	else
 		return true;
+}
+
+function redir($redir_path)
+{
+    echo "<script>setTimeout(\"location.href = \'$redir_path\';\",2000);</script>";
 }

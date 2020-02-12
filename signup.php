@@ -18,7 +18,7 @@ if ((empty($_POST['login']) || empty($_POST['mail']) || empty($_POST['name']) ||
 
 else if (isset($_POST['login']) && isset($_POST['mail']) && isset($_POST['name']) && isset($_POST['passwd']) && isset($_POST['passwd2']) && isset($_POST['submit']))
 {		
-	if (!ft_login_exist($_POST['login']) && !ft_mail_exist($_POST['mail']))
+	if (!ft_login_exist($_POST['login'], 'lightModif') && !ft_mail_exist($_POST['mail'], 'lightModif'))
 	{
 		if (there_are_spaces($_POST['login']) || there_are_spaces($_POST['mail']) || there_are_spaces($_POST['passwd']) || there_are_spaces($_POST['passwd2']))
 			$_SESSION['error'] = "Merci de ne pas mettre d'espaces";

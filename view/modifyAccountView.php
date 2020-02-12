@@ -6,12 +6,12 @@
 <section id="content">
     <div class="modify-account">
         <div class="modify-form">
-            <h3>Modifier le profil</h3>
-            <p style="font-weight:bold; text-align: center; color: #00B200"><?= $lightModif ?></p>
+            <h3>Edit profile</h3>
+            <p style="font-weight:bold; text-align: center; color: #3897f0"><?= $lightModif ?></p>
             <form class="subscription-form" action="" method="post">
                 <table>
                     <tr>
-                        <td><p>Nom d'utilisateur</p></td>
+                        <td><p>Login</p></td>
                         <td><input type="text" name="login" value="<?= $profile['login']; ?>" required maxlength="12"></td>
                     </tr>
                     <tr>
@@ -19,7 +19,7 @@
                             <td><input type="email" name="mail" value="<?= $profile['mail']; ?>" required maxlength="40"></td>
                     </tr>
                     <tr>
-                        <td><p>Nom complet</p></td>
+                        <td><p>Full name</p></td>
                         <td><input type="text" name="name" value="<?= $profile['name']; ?>" required maxlength="15"></td>
                     </tr>
                     <tr>
@@ -28,32 +28,48 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="submit" name="submit-main" value="Sauvegarder"></td>
+                        <td><input type="submit" name="submit-main" value="Save"></td>
                     </tr>
                 </table>
             </form>
         </div>
         <br>
         <div class="modify-form password-form">
-            <h3>Changer de mot de passe</h3>
+            <h3>Edit password</h3>
             <p style="font-weight:bold; text-align: center; color: #DA2C38"><?= $error ?></p>
             <form class="subscription-form" action="" method="post">
                 <table>
                     <tr>
-                        <td><p>Ancien mot de passe</p></td>
+                        <td><p>Old password</p></td>
                         <td><input type="password" name="oldPasswd" required></td>
                     </tr>
                     <tr>
-                        <td><p>Nouveau mot de passe</p></td>
+                        <td><p>New password</p></td>
                         <td><input type="password" name="newPasswd1" required></td>
                     </tr>
                     <tr>
-                        <td><p>Confirmer le nouveau mot de passe</p></td>
+                        <td><p>Confirm new password</p></td>
                         <td><input type="password" name="newPasswd2" required></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="submit" name="submit-new-pass" value="Modifier le mot de passe"></td>
+                        <td><input type="submit" name="submit-new-pass" value="Edit password"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="modify-form password-form">
+            <h3>Delete your account</h3>
+            <p style="font-weight:bold; text-align: center; color: #DA2C38"><?= $error ?></p>
+            <form class="subscription-form" action="" method="post">
+                <table>
+                    <tr>
+                        <td><p>Write your password</p></td>
+                        <td><input type="password" name="passwd" required></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" name="submit-del-user" value="Definitly delete my account"></td>
                     </tr>
                 </table>
             </form>

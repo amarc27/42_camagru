@@ -29,7 +29,7 @@
                     if (!empty($_SESSION['login']))
                     {
                         echo "<a href=\"$account_link\"><p>Account</p></a>";
-                        echo "<a href=\"$logout_link\"><p>Logout</p></a>";
+                        echo "<a href=\"logout.php?action=out\"><p>Logout</p></a>";
                     }
 
                     else
