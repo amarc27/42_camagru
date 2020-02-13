@@ -1,18 +1,24 @@
-<?php
-ob_start();
-?>
+<?php ob_start(); ?>
 
-<script src="public/js/camera.js"></script>
 <section id="content">
-    <div class="camera-page">
-        <h1>Camagru</h1>
-        <h3>Here you can take photos and share them with your friends !</h3>
-        <video id="video"></video>
-        <button id="startbutton">Prendre une photo</button>
-        <canvas id="canvas"></canvas>
-        <img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
-        <!-- <video autoplay="true" id="videoElement"> -->
-    </div>
+    <article id="photo-section">
+        <div id="photo-frame">
+            <form action="" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file">
+                <button type="submit" name="submit">Upload your pictures</button>
+            </form>
+        </div>
+        <div id="sticker-frame">
+            <p>Stickers</p>
+        </div>
+    </article>
+    <article id="feed">
+        <?php 
+            while($result = $data->fetch()) {
+                echo "<img src='".$result['img']."' alt=''>";
+            }
+        ?>
+    </article>
 </section>
 
 <?php
