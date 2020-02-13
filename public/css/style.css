@@ -6,9 +6,12 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
 
 body {
-    margin: 0;
     font-family: 'Roboto', sans-serif;
     background-color: #FAFAFA !important;
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
 }
 
 a {
@@ -125,11 +128,12 @@ section {
 /* FOOTER */
 /**********/
 footer p {
-    position: fixed;
+    position: absolute;
+    right: 0;
     bottom: 0;
-    width: 100%;
+    left: 0;
     text-align: center;
-    margin-top: 100px;
+    padding: 1rem;
 }
 
 

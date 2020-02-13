@@ -5,5 +5,6 @@
     $signup_link = $srcDIR."/signup.php";
     $login_link = $srcDIR."/login.php";
     $logout_link = $srcDIR."/logout.php";
+    $camera_link = $srcDIR."/camera.php";
 
     require('./view/indexView.php');

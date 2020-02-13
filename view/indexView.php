@@ -22,6 +22,7 @@
                     {
                         echo "<a href=\"$account_link\"><p>Account</p></a>";
                         echo "<a href=\"$logout_link\"><p>Logout</p></a>";
+                        echo "<a href=\"$camera_link\"><p>Camera</p></a>";
                     }
 
                     else

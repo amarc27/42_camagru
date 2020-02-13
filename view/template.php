@@ -4,6 +4,7 @@
     $signup_link = $srcDIR."/signup.php";
     $login_link = $srcDIR."/login.php";
     $logout_link = $srcDIR."/logout.php";
+    $camera_link = $srcDIR."/camera.php";
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +31,7 @@
                     {
                         echo "<a href=\"$account_link\"><p>Account</p></a>";
                         echo "<a href=\"logout.php?action=out\"><p>Logout</p></a>";
+                        echo "<a href=\"$camera_link\"><p>Camera</p></a>";
                     }
 
                     else
