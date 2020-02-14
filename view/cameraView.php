@@ -3,9 +3,11 @@
 <section id="content">
     <article id="photo-section">
         <div id="photo-frame">
+            <h3>Upload pictures</h3>
+            <p style="font-weight:bold; text-align: center; color: #DA2C38"><?= $error ?></p>
             <form action="" method="POST" enctype="multipart/form-data">
                 <input type="file" name="file">
-                <button type="submit" name="submit">Upload your pictures</button>
+                <button type="submit" name="submit-upload">Upload your pictures</button>
             </form>
         </div>
         <div id="sticker-frame">

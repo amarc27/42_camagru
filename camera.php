@@ -4,7 +4,7 @@ session_start();
 require('model/generalModel.php');
 include ('config/database.php');
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit-upload'])) {
     $file = $_FILES['file'];
 
     $fileName = $_FILES['file']['name'];
@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
 
     $allowed = array('jpg', 'jpeg', 'png');
 
-    if(!file_exists('public/picture/'.$_SESSION['login'])) {
+    if (!file_exists('public/picture/'.$_SESSION['login'])) {
         mkdir('public/picture/'.$_SESSION['login'], 0777, true);
     }
     // else {
@@ -56,9 +56,10 @@ if (isset($_GET['action']))
         delete_picture($_GET['id_img']);
         header('Location: camera.php');
     }
-
 }
 
 $data = get_pics($_SESSION['login']);
+
+$error = ft_error();
 
 require("view/cameraView.php");
