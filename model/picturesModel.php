@@ -12,11 +12,20 @@ function add_picture($login, $file) {
 function get_pics($login) {
 	$profile = get_profile($login);
 	$db = db_connect();
-
-	// $sql = $db->prepare("SELECT * FROM picture WHERE id_user = :id");
-	//$sql->bindParam(":id", $profile['id'], PDO::PARAM_INT);
-
 	$sql = 'SELECT * FROM picture WHERE id_user = "'.$profile['id'].'"';
 	$data = $db->query($sql);
 	return ($data);
+}
+
+function delete_picture($pic)
+{
+	delete_item('picture', 'id_img', $pic);
+}
+
+function delete_item($table, $field, $id)
+{
+	$db = db_connect();
+	$sql = "DELETE  FROM ".$table."  WHERE ".$table.".".$field." = '".$id."'";
+	$db->query($sql);
+	$db = null;
 }

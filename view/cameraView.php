@@ -15,7 +15,10 @@
     <article id="feed">
         <?php 
             while($result = $data->fetch()) {
-                echo "<img src='".$result['img']."' alt=''>";
+                echo "<div class='image-area'>";
+                    echo "<img src='".$result['img']."' alt=''>";
+                    echo "<a class='remove-image' id='".$result['id_img']."' href='camera.php?action=deletePic&id_img=".$result['id_img']."' style='display: inline;'>&#215;</a>";
+                echo "</div>";
             }
         ?>
     </article>

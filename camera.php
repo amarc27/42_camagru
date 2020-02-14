@@ -20,9 +20,10 @@ if (isset($_POST['submit'])) {
 
     if(!file_exists('public/picture/'.$_SESSION['login'])) {
         mkdir('public/picture/'.$_SESSION['login'], 0777, true);
-    } else {
-        unlink('public/picture/'.$_SESSION['login']);
     }
+    // else {
+    //     unlink('public/picture/'.$_SESSION['login']);
+    // }
 
     if (file_exists('public/picture/'.$_SESSION['login'])) {
         if (in_array($fileActualExt, $allowed)) {
@@ -46,6 +47,16 @@ if (isset($_POST['submit'])) {
             $_SESSION["error"] = "Not a valid file (allowed : jpg, jpeg, png)";
         }
     }
+}
+
+if (isset($_GET['action']))
+{
+    if ((!empty($_GET['action'] === 'deletePic') && (!empty($_GET['id_img']))))
+    {
+        delete_picture($_GET['id_img']);
+        header('Location: camera.php');
+    }
+
 }
 
 $data = get_pics($_SESSION['login']);
