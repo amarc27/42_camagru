@@ -121,15 +121,18 @@ section {
 
 #photo-frame {
     border: 1px solid black;
-    width: 600px;
-    height: 600px;
+    width: 640px;
+    height: 680px;
     margin-bottom: 30px;
 }
 
 #sticker-frame {
     border: 1px solid black;
-    width: 600px;
+    width: 640px;
     height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 
@@ -397,4 +400,8 @@ section .activate-frame {
     background: #E54E4E;
     top: 0px;
     right: -12px;
+}
+
+.stickers-area a img {
+    width: 100px;
 }

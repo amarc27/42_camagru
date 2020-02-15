@@ -9,7 +9,7 @@
 </div>
 
 <!-- Webcam video snapshot -->
-<canvas id="canvas" width="640" height="480"></canvas>
+<canvas id="canvas" width="640" height="600"></canvas>
 
 <script>
 'use strict';
@@ -22,7 +22,7 @@ const errorMsgElement = document.querySelector('span#errorMsg');
 const constraints = {
   audio: true,
   video: {
-    width: 1280, height: 720
+    width: 600, height: 600
   }
 };
 
