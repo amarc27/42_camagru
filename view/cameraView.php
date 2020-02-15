@@ -1,53 +1,58 @@
 <?php ob_start(); ?>
+	<h2>Camera</h2>
+    <hr id="hr_title"/>
 
-<section id="content">
-    <article id="photo-section">
-        <div id="photo-frame">
-            <!-- <h3>Upload pictures</h3>
-            <p style="font-weight:bold; text-align: center; color: #DA2C38"><?= $error ?></p>
-            <form action="" method="POST" enctype="multipart/form-data">
-                <input type="file" name="file">
-                <button type="submit" name="submit-upload">Upload your pictures</button>
-            </form> -->
-            <!-- Stream video via webcam -->
-            <div class="video-wrap">
-                <video id="video" playsinline autoplay width="640" height="480"></video>
+    <div id="camera">
+        <div id='div_video'>
+            <div id='overlay'>
+                <p id="overlay_msg">T&eacute;l&eacute;chargez une photo &agrave; traiter</p>
+                <img id='id_sticker' style="width:100%"  />
             </div>
-
-            <!-- Trigger canvas web API -->
-            <div class="controller">
-                <button id="snap">Capture</button>
-            </div>
-
-            <!-- Webcam video snapshot -->
-            <canvas id="canvas" width="640" height="480"></canvas>
+            <video id='video'></video>
+            <img id='camera_img'/>
         </div>
-        <div id="sticker-frame">
-        <?php 
-            while($sticker = $sticker_data->fetch()) {
-                echo "<div class='stickers-area'>";
-                    echo "<a class='select-sticker' id='".$sticker['id_sticker']."' href='camera.php?action=putSticker&id_sticker=".$sticker['id_sticker']."' style='display: inline;'>
-                            <img src='".$sticker['sticker_label']."' alt='Sticker'></a>";
-                echo "</div>";
+        <div id='div_stickers'>
+            <?php
+            while ($sticker = $stickers->fetch())
+            {
+                echo "<img src='".$sticker['img_stickers']."' alt='".$sticker['id_stickers']."'>";
             }
-        ?>
+            echo "<img src='".$day['img_stickers']."' alt='".$sticker['id_stickers']."'>";
+            ?>
         </div>
-    </article>
-    <article id="feed">
-        <?php 
-            while($picture = $pic_data->fetch()) {
-                echo "<div class='image-area'>";
-                    echo "<img src='".$picture['img']."' alt=''>";
-                    echo "<a class='remove-image' id='".$picture['id_img']."' href='camera.php?action=deletePic&id_img=".$picture['id_img']."' style='display: inline;'>&#215;</a>";
-                echo "</div>";
-            }
-        ?>
-    </article>
-</section>
-<script src="public/js/camera.js"></script>
+        </br>
+      
+        <form method="POST" enctype="multipart/form-data" id="picture_take"> 
+            <input type="text" name="sticker" value="" id="sticker_id" style="display: none">
+            <input type="text" name="src" value="" style="display: none;">
+            <input type="submit" id="take_btn" value="">
+        </form>
+        <form method="POST" enctype="multipart/form-data" id="picture_up">
+            <label for="fileToUpload" >Choisir une photo</label>
+            <input style="display: none" type="file" name="fileToUpload" id="fileToUpload" accept="image/*" onchange="loadFile(event)">
+			<input type="text" name="sticker" value="" id="sticker_id" style="display: none">
+            <input type="text" name="src" value="coucou" style="display: none;">
+            <input type="submit" value="Valider" id="uploadbutton" name="submit" >
+        </form>
+        </br>
+        <canvas id="canvas"></canvas>
+        <div id='camera_gallery'>
+            <img style="display:none" id="photo" alt="photo">
+        </div>
+    </div>
+ 
 
-<?php
-    $content = ob_get_clean();
-    $title = "Camera &#8226; Camagru";
-    require('view/template.php');
-?>
+<script src="./public/js/camera.js"></script>
+
+<script>
+    var loadFile = function(event) {
+    var output = document.getElementById('camera_img');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    document.querySelector('#overlay_msg').style.display="none";
+    document.querySelector('#video').style.display="none";
+    output.style.display="block";
+  };
+</script>
+<?php $content = ob_get_clean(); ?>
+<?php require('view/template.php'); ?>
+

@@ -1,6 +1,6 @@
 <?php
 include ('userModel.php');
-include ('picturesModel.php');
+
 
 function db_connect() 
 {
