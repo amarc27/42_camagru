@@ -2,16 +2,6 @@
 
 <section id="content">
     <article id="photo-section">
-        <div id="sticker_frame">
-        <?php 
-            while($sticker = $sticker_data->fetch()) {
-                echo "<div class='stickers-area'>";
-                    echo "<a class='select-sticker' id='".$sticker['id_sticker']."' href='camera.php?action=putSticker&id_sticker=".$sticker['id_sticker']."' style='display: inline;'>
-                            <img src='".$sticker['sticker_label']."' alt='Sticker'></a>";
-                echo "</div>";
-            }
-        ?>
-        </div>
         <div id="photo_frame">
             <!-- <h3>Upload pictures</h3>
             <p style="font-weight:bold; text-align: center; color: #DA2C38"><?= $error ?></p>
@@ -21,7 +11,7 @@
             </form> -->
             <!-- Stream video via webcam -->
             <div class="video-wrap">
-                <video id="video" playsinline autoplay width="640" height="480"></video>
+                <video id="video" playsinline autoplay></video>
             </div>
 
             <!-- Trigger canvas web API -->
@@ -31,6 +21,17 @@
 
             <!-- Webcam video snapshot -->
             <canvas id="canvas" width="640" height="480"></canvas>
+
+        </div>
+        <div id="sticker_frame">
+        <?php 
+            while($sticker = $sticker_data->fetch()) {
+                echo "<div class='stickers-area'>";
+                    echo "<a class='select-sticker' id='".$sticker['id_sticker']."' href='camera.php?action=putSticker&id_sticker=".$sticker['id_sticker']."' style='display: inline;'>
+                            <img src='".$sticker['sticker_label']."' alt='Sticker'></a>";
+                echo "</div>";
+            }
+        ?>
         </div>
     </article>
     <article id="feed">
