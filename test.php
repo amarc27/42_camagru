@@ -14,16 +14,17 @@
     </div>
     <div class="mySticks">
         <input type="checkbox" id="stick1" name="stick1" value="stick1">
-        <label for="stick1">stick1</label>
+        <img src="public/stickers/42Label.png" />
         <input type="checkbox" id="stick2" name="stick2" value="stick2">
-        <label for="stick2">stick2</label>
+        <img src="public/stickers/42Label.png" />
 
     </div>
     <div>
-        <button action="test.php" type="submit">Save !</button>
+        <?php
+            echo "<img src='public/tmp/tampon1.png' />"
+        ?>
     </div>
     </form>
 
 </body>
-</html>
-
+</html> 

@@ -419,7 +419,7 @@ section .activate-frame {
     width: 100px;
 }
 
-#canvas {
+#overview {
     border: 1px solid black;
     margin-bottom: 150px;
     margin-top: 310px;

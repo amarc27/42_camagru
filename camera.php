@@ -7,6 +7,27 @@ if(empty($_SESSION['login']))
 require('model/generalModel.php');
 include ('config/database.php');
 
+if (isset($_POST['submit-snapshot'])) {
+    $baseFromJavascript = $_POST['base64'];
+    $base_to_php = explode(',', $baseFromJavascript);
+
+    $data = base64_decode($base_to_php[1]);
+    if (!file_exists('public/tmp')) {
+    mkdir('public/tmp', 0777, true);
+    }
+
+    $filePath = 'public/tmp';
+
+    if (file_exists($filePath))
+    {
+        file_put_contents($filePath.'/tampon1.png',$data);
+    } else
+    {
+        touch($filePath.'/tampon2.png');
+        file_put_contents($filePath,$data);
+    }
+}
+
 if (isset($_POST['submit-upload'])) {
     $file = $_FILES['file'];
 

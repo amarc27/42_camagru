@@ -27,32 +27,32 @@ if (file_exists($filePath))
 }
 
 //===== SUPERPOSITION =====//
-$sticker_to_paste='./public/stickers/mask.png';
-$orign_photo='./public/tmp/tampon1.png';
+// $sticker_to_paste='./public/stickers/mask.png';
+// $orign_photo='./public/tmp/tampon1.png';
 
+// // $im = imagecreatefrompng($orign_photo);
+// // $condicion = GetImageSize($sticker_to_paste); // image format?
+// // print_r($condicion);
+
+// // if($condicion[2] == 1) //gif
+// // $im2 = imagecreatefromgif('$sticker_to_paste');
+// // if($condicion[2] == 2) //jpg
+// // $im2 = imagecreatefromjpeg('$sticker_to_paste');
+// // if($condicion[2] == 3) //png
 // $im = imagecreatefrompng($orign_photo);
-// $condicion = GetImageSize($sticker_to_paste); // image format?
-// print_r($condicion);
-
-// if($condicion[2] == 1) //gif
-// $im2 = imagecreatefromgif('$sticker_to_paste');
-// if($condicion[2] == 2) //jpg
-// $im2 = imagecreatefromjpeg('$sticker_to_paste');
-// if($condicion[2] == 3) //png
-$im = imagecreatefrompng($orign_photo);
-$sticker = imagecreatefrompng($sticker_to_paste);
+// $sticker = imagecreatefrompng($sticker_to_paste);
 
 
-header('Content-Type: image/png');
+// header('Content-Type: image/png');
 
-// STACK OVERFLOW //
-// ob_start();
+// // STACK OVERFLOW //
+// // ob_start();
+// // imagepng($im);
+// // $output = ob_get_contents();
+// // ob_end_clean();
+
+// imagecopy($im, $sticker, 0, 0, 0, 0, 640, 480);
 // imagepng($im);
-// $output = ob_get_contents();
-// ob_end_clean();
 
-imagecopy($im, $sticker, 0, 0, 0, 0, 640, 480);
-imagepng($im);
-
-imagedestroy($im);
-imagedestroy($sticker);
+// imagedestroy($im);
+// imagedestroy($sticker);

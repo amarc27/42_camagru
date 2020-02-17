@@ -3,6 +3,7 @@
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
 const photo = document.getElementById('canvas_img');
+const snap = document.getElementById('snap');
 const errorMsgElement = document.querySelector('span#errorMsg');
 
 const constraints = {
@@ -31,6 +32,7 @@ function handleSuccess(stream) {
 // Load init
 init();
 
+// snap.addEventListener("click", function() {
 document.getElementById('form').addEventListener("submit",function(){
   var context = canvas.getContext('2d');
   context.drawImage(video, 0, 0, 640, 480);

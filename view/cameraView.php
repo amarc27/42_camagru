@@ -16,9 +16,9 @@
 
             <!-- Trigger canvas web API -->
             <div class="controller">
-                <form method="POST" action='overlay.php' name="form" id="form">
-                <textarea name="base64" id="base64"></textarea>
-                <button id='snap' type="submit">Send image</button>
+                <form method="POST" name="form" id="form">
+                <textarea name="base64" id="base64" style='display:none' ></textarea>
+                <button type="submit" name='submit-snapshot'>Send image</button>
                 </form>
             </div>
 
@@ -30,9 +30,13 @@
 
             <!-- Note that you need to submit the form (or the ajax) with post method,
             because the base64 can be too long for use the get method -->
-            <canvas id="canvas" width="640" height="480">
-            <!-- <img style="display:none" id="canvas_img" alt="photo"> -->
-            </canvas>
+            <canvas id="canvas" width="640" height="480"style="display:none"></canvas>
+            <div class="overview">
+            <?php
+            if (file_exists('public/tmp/tampon1.png'))
+                echo "<img id=overview src='public/tmp/tampon1.png' />";
+            ?>
+            </div>
         </div>
         <div id="sticker_frame">
         <?php 
