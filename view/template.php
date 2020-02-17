@@ -49,7 +49,7 @@
     <?= $content ?>
 
     <footer>
-        <p>Camagru 2020 | Made by amarc</p>
+        <p>Camagru 2020 | Made by amarc & cecourt</p>
     </footer>
 </body>
 </html>

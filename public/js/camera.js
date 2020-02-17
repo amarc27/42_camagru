@@ -2,7 +2,7 @@
 
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
-const snap = document.getElementById("snap");
+const photo = document.getElementById('canvas_img');
 const errorMsgElement = document.querySelector('span#errorMsg');
 
 const constraints = {
@@ -31,8 +31,9 @@ function handleSuccess(stream) {
 // Load init
 init();
 
-// Draw image
-var context = canvas.getContext('2d');
-snap.addEventListener("click", function() {
-	context.drawImage(video, 0, 0, 640, 480);
+document.getElementById('form').addEventListener("submit",function(){
+  var context = canvas.getContext('2d');
+  context.drawImage(video, 0, 0, 640, 480);
+  var image = canvas.toDataURL('image/png'); // data:image/png...
+  document.getElementById('base64').value = image;
 });

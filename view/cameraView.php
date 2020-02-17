@@ -16,12 +16,23 @@
 
             <!-- Trigger canvas web API -->
             <div class="controller">
-                <button id="snap">Capture</button>
+                <form method="POST" action='overlay.php' name="form" id="form">
+                <textarea name="base64" id="base64"></textarea>
+                <button id='snap' type="submit">Send image</button>
+                </form>
             </div>
 
             <!-- Webcam video snapshot -->
-            <canvas id="canvas" width="640" height="480"></canvas>
+            <!-- <canvas id="canvas" width="640" height="480">
+                <img style="display:none" id="photo" alt="photo">
+            </canvas> -->
 
+
+            <!-- Note that you need to submit the form (or the ajax) with post method,
+            because the base64 can be too long for use the get method -->
+            <canvas id="canvas" width="640" height="480">
+            <!-- <img style="display:none" id="canvas_img" alt="photo"> -->
+            </canvas>
         </div>
         <div id="sticker_frame">
         <?php 
