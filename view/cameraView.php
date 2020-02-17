@@ -2,13 +2,15 @@
 
 <section id="content">
     <article id="photo-section">
+        <p style="font-weight:bold; text-align: center; color: #DA2C38"><?= $error ?></p>
         <div id="photo_frame">
-            <!-- <h3>Upload pictures</h3>
+            <h3>Upload pictures</h3>
             <p style="font-weight:bold; text-align: center; color: #DA2C38"><?= $error ?></p>
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data">
                 <input type="file" name="file">
                 <button type="submit" name="submit-upload">Upload your pictures</button>
-            </form> -->
+            </form>
+
             <!-- Stream video via webcam -->
             <div class="video-wrap">
                 <video id="video" playsinline autoplay></video>
@@ -18,23 +20,17 @@
             <div class="controller">
                 <form method="POST" name="form" id="form">
                 <textarea name="base64" id="base64" style='display:none' ></textarea>
-                <button type="submit" name='submit-snapshot'>Send image</button>
+                <button type="submit" name='submit-snapshot'>Take picture</button>
                 </form>
             </div>
 
-            <!-- Webcam video snapshot -->
-            <!-- <canvas id="canvas" width="640" height="480">
-                <img style="display:none" id="photo" alt="photo">
-            </canvas> -->
-
-
-            <!-- Note that you need to submit the form (or the ajax) with post method,
-            because the base64 can be too long for use the get method -->
             <canvas id="canvas" width="640" height="480"style="display:none"></canvas>
             <div class="overview">
             <?php
-            if (file_exists('public/tmp/tampon1.png'))
-                echo "<img id=overview src='public/tmp/tampon1.png' />";
+            if (file_exists('public/tmp/tampon1.png') && !empty($overlay))
+                echo $overlay;
+            else if (file_exists('public/tmp/tampon1.png'))
+                echo "<img src='public/tmp/tampon1.png' />";
             ?>
             </div>
         </div>
@@ -48,6 +44,7 @@
             }
         ?>
         </div>
+    <button type='submit' name='submit-save'>Save</button>
     </article>
     <article id="feed">
         <?php 

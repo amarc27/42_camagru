@@ -419,9 +419,7 @@ section .activate-frame {
     width: 100px;
 }
 
-#overview {
-    border: 1px solid black;
+.overview {
     margin-bottom: 150px;
     margin-top: 310px;
-
 }

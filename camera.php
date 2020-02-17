@@ -6,26 +6,20 @@ if(empty($_SESSION['login']))
 
 require('model/generalModel.php');
 include ('config/database.php');
+require('overlay.php');
+
+$filePath = 'public/tmp';
 
 if (isset($_POST['submit-snapshot'])) {
     $baseFromJavascript = $_POST['base64'];
     $base_to_php = explode(',', $baseFromJavascript);
 
     $data = base64_decode($base_to_php[1]);
-    if (!file_exists('public/tmp')) {
-    mkdir('public/tmp', 0777, true);
+    if (!file_exists($filePath)) {
+        mkdir($filePath, 0777, true);
     }
-
-    $filePath = 'public/tmp';
-
     if (file_exists($filePath))
-    {
         file_put_contents($filePath.'/tampon1.png',$data);
-    } else
-    {
-        touch($filePath.'/tampon2.png');
-        file_put_contents($filePath,$data);
-    }
 }
 
 if (isset($_POST['submit-upload'])) {
@@ -42,25 +36,21 @@ if (isset($_POST['submit-upload'])) {
 
     $allowed = array('jpg', 'jpeg', 'png');
 
-    if (!file_exists('public/picture/'.$_SESSION['login'])) {
-        mkdir('public/picture/'.$_SESSION['login'], 0777, true);
+    if (!file_exists($filePath)) {
+        mkdir($filePath, 0777, true);
     }
     // else {
     //     unlink('public/picture/'.$_SESSION['login']);
     // }
 
-    if (file_exists('public/picture/'.$_SESSION['login'])) {
+    if (file_exists($filePath)) {
         if (in_array($fileActualExt, $allowed)) {
             if ($fileError === 0) {
                 if ($fileSize < 500000) {
-                    $i = 1;
-                    while (file_exists('public/picture/'.$_SESSION['login']."/"."$fileExt[0](".$i.").".$fileActualExt))
-                        $i++;
-                    $fileNameNew =  $fileExt[0]."(".$i.").".$fileActualExt;
-                    $fileDestination = 'public/picture/'.$_SESSION['login']."/".$fileNameNew;
-                    $fullPath = "./".$fileDestination;
+                    $fileNameNew =  '/tampon1.png';
+                    $fileDestination = $filePath.$fileNameNew;
                     move_uploaded_file($fileTmpName, $fileDestination);
-                    add_picture($_SESSION['login'], $fullPath);
+                    //add_picture($_SESSION['login'], $fullPath);
                 } else {
                     $_SESSION["error"] = "File too big ! (allowed : 500mb max)";
                 }
@@ -73,11 +63,6 @@ if (isset($_POST['submit-upload'])) {
     }
 }
 
-function put_sticker($sticker_path)
-{
-    echo 'toto';
-}
-
 if (isset($_GET['action']))
 {
     if ((!empty($_GET['action'] === 'deletePic') && (!empty($_GET['id_img']))))
@@ -87,10 +72,16 @@ if (isset($_GET['action']))
     }
     else if ((!empty($_GET['action'] === 'putSticker') && (!empty($_GET['id_sticker']))))
     {
-        $sticker_path = get_one_sticker($_GET['id_sticker']);
-        // put_sticker($sticker_path);
-
-        header('Location: camera.php');
+        if (get_one_sticker($_GET['id_sticker']) !== false)
+        {
+            $sticker_path = get_one_sticker($_GET['id_sticker']);
+            if (!file_exists('public/tmp/tampon1.png'))
+                $_SESSION['error'] = 'Please take a picture before';
+            else
+                $overlay = put_sticker($sticker_path);
+        }
+        else
+            $_SESSION['error'] = "You hacker, this sticker does not exist :p";
     }
 }
 

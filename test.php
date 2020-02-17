@@ -1,30 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form> 
-    <div class="myCam">
-        <input type="checkbox" id="photo" name="photo" value="photo">
-        <label for="photo">Take Photo</label>
-    </div>
-    <div class="mySticks">
-        <input type="checkbox" id="stick1" name="stick1" value="stick1">
-        <img src="public/stickers/42Label.png" />
-        <input type="checkbox" id="stick2" name="stick2" value="stick2">
-        <img src="public/stickers/42Label.png" />
+<?php
 
-    </div>
-    <div>
-        <?php
-            echo "<img src='public/tmp/tampon1.png' />"
-        ?>
-    </div>
-    </form>
+require('model/generalModel.php');
+include ('config/database.php');
 
-</body>
-</html> 
+$sticker = 2;
+
+if (true)
+{
+    if (get_one_sticker($sticker) !== false)
+        echo "Ce sticker existe";
+    else
+        echo "Ce sticker n'existe pas";
+}
+if (true)
+{
+    if (get_one_sticker($sticker) !== false)
+        echo "Ce sticker existe";
+    else
+        echo "Ce sticker n'existe pas";
+}

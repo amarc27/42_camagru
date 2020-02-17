@@ -48,5 +48,8 @@ function get_one_sticker($sticker)
 	$sql->execute();
 	$data = $sql->fetch(PDO::FETCH_OBJ);
 	$db = null;
-	return ($data->img_sticker);
+	if ($data == "")
+		return false;
+	else
+		return ($data->img_sticker);
 }
