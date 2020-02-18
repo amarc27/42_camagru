@@ -2,13 +2,12 @@
 
 <section id="content">
     <article id="photo-section">
-        <p style="font-weight:bold; text-align: center; color: #DA2C38"><?= $error ?></p>
         <div id="photo_frame">
-            <h3>Upload pictures</h3>
+            <h3 class='upload-title'>Photomaton</h3>
             <p style="font-weight:bold; text-align: center; color: #DA2C38"><?= $error ?></p>
             <form method="POST" enctype="multipart/form-data">
-                <input type="file" name="file">
-                <button type="submit" name="submit-upload">Upload your pictures</button>
+                <input id="select-file" type="file" name="file" style="display:none" >
+                <button id="upload-file" type="submit" name="submit-upload" style="display:none" >Upload your pictures</button>
             </form>
 
             <!-- Stream video via webcam -->
@@ -20,7 +19,7 @@
             <div class="controller">
                 <form method="POST" name="form" id="form">
                 <textarea name="base64" id="base64" style='display:none' ></textarea>
-                <button type="submit" name='submit-snapshot'>Take picture</button>
+                <button id='submit-take-picture' type="submit" name='submit-snapshot'>Take picture</button>
                 </form>
             </div>
 
@@ -44,7 +43,9 @@
             }
         ?>
         </div>
-    <button type='submit' name='submit-save'>Save</button>
+        <form method="POST">
+            <button type='submit' name='submit-save'>Save</button>
+        </form>
     </article>
     <article id="feed">
         <?php 

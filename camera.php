@@ -22,6 +22,7 @@ if (isset($_POST['submit-snapshot'])) {
         file_put_contents($filePath.'/tampon1.png',$data);
 }
 
+//===== UPLOAD PHOTO =====//
 if (isset($_POST['submit-upload'])) {
     $file = $_FILES['file'];
 
@@ -62,6 +63,7 @@ if (isset($_POST['submit-upload'])) {
     }
 }
 
+//===== DELETE PIC OR ADD STICKER =====//
 if (isset($_GET['action']))
 {
     if ((!empty($_GET['action'] === 'deletePic') && (!empty($_GET['id_img']))))
@@ -77,10 +79,51 @@ if (isset($_GET['action']))
             if (!file_exists('public/tmp/tampon1.png'))
                 $_SESSION['error'] = 'Please take a picture before';
             else
-                $overlay = put_sticker($sticker_path);
+            {
+                $data = put_sticker($sticker_path);
+                $overlay = $data['output'];           
+            }
         }
         else
-            $_SESSION['error'] = "You hacker, this sticker does not exist :p";
+            $_SESSION['error'] = "You hacker, this sticker does not exist ;(";
+    }
+}
+
+//===== SAVE PHOTO =====//
+if (isset($_POST['submit-save']))
+{
+    if ((@!empty($_GET['action'] === 'putSticker') && (!empty($_GET['id_sticker']))))
+    {
+        if (get_one_sticker($_GET['id_sticker']) !== false)
+        {
+            if (file_exists('public/tmp/tampon1.png'))
+            {
+                $sticker_path = get_one_sticker($_GET['id_sticker']);
+                $array = put_sticker($sticker_path);
+                $encoded_image = $array['image'];
+
+                $base_to_php = $encoded_image;
+                $bin = base64_decode($base_to_php);
+                $picturesPath = 'public/picture/'.$_SESSION['login'];
+                if (!file_exists($picturesPath))
+                    mkdir($picturesPath, 0777, true);
+                $i = 1;
+                while (file_exists($picturesPath.'/'.$_SESSION['login'].'('.$i.')'.'.png'))
+                    $i++;
+                if (file_exists($picturesPath))
+                    file_put_contents($picturesPath.'/'.$_SESSION['login'].'('.$i.')'.'.png', $bin);
+                add_picture($_SESSION['login'], $picturesPath.'/'.$_SESSION['login'].'('.$i.')'.'.png');
+            }
+            else {
+                $_SESSION['error'] = 'Take a photo before';
+            }
+        }
+        else {
+            $_SESSION['error'] = 'You hacker, this sticker does not exist ;(';
+        }
+    }
+    else {
+        $_SESSION['error'] = 'Merci de sélectionner un sticker';
     }
 }
 

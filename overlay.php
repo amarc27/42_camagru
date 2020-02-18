@@ -17,19 +17,16 @@ function put_sticker($sticker_path)
     $im = imagecreatefrompng($orig_photo);
     $sticker = imagecreatefrompng($sticker_to_paste);
 
-
-    // header('Content-Type: image/png');
-
-    // STACK OVERFLOW //
     imagecopy($im, $sticker, 0, 0, 0, 0, 640, 480);
 
     ob_start();
     imagepng($im);
     $image = ob_get_contents();
     ob_end_clean();
-    $output = '<img src="data:image/png;base64,'.base64_encode($image).'" />';
     
+    $ret_array['output'] = '<img src="data:image/png;base64,'.base64_encode($image).'" />';
+    $ret_array['image'] = base64_encode($image);
     imagedestroy($im);
     imagedestroy($sticker);
-    return $output;
+    return $ret_array;
 }

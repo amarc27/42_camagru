@@ -8,14 +8,14 @@ function get_pics($login) {
     return ($data);
 }
 
-function add_picture($login, $file) {
+function add_picture($login, $fileToUpload) {
     $profile = get_profile($login);
     $db = db_connect();
 
-    $sql = "INSERT INTO picture (id_user, img) VALUES ('".$profile['id']."', '".$file."')";
+    $sql = "INSERT INTO picture (id_user, img) VALUES ('".$profile['id']."', '".$fileToUpload."')";
     $db->query($sql);
-    $db = NULL;
-    return true;
+	$db = NULL;
+	return true;
 }
 
 function delete_item($table, $field, $id)

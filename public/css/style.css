@@ -111,18 +111,24 @@ section {
 
 #photo-section {
     margin-right: 20px;
+    padding: 10px 20px 20px 20px;
+    border: 1px solid #e6e6e6;
+    border-radius: 1px;
+    background-color: #FFF;
 }
 
 #feed {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid black;
     width: 600px;
     height: 730px;
     margin-left: 20px;
     overflow: hidden;
     overflow-y: scroll;
+    border: 1px solid #e6e6e6;
+    border-radius: 1px;
+    background-color: #FFF;
 }
 
 #feed img {
@@ -131,15 +137,14 @@ section {
 }
 
 #photo_frame {
-    border: 1px solid black;
     width: 640px;
-    height: 680px;
+    height: 550px;
     margin-bottom: 30px;
 }
 
 #sticker_frame {
+    margin-top: 100px;
     margin-bottom: 30px;
-    border: 1px solid black;
     width: 640px;
     height: 100px;
     display: flex;
@@ -422,4 +427,36 @@ section .activate-frame {
 .overview {
     margin-bottom: 150px;
     margin-top: 310px;
+}
+
+.upload-title {
+    font-family: 'Pacifico', cursive;
+    margin: 10px 0px 0px 0px;
+    text-align: center;
+    font-weight: 300;
+    font-size: 40px;
+}
+
+button {
+    background: rgb(83,92,205);
+    background: linear-gradient(90deg, rgba(83,92,205,1) 0%, rgba(165,53,185,1) 25%, rgba(252,178,76,1) 100%); 
+    color: #fff;
+    border: 1px solid #FAFAFA;
+    border-radius: 6px;
+    margin-top: 20px;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 4px 4px 0px gray;
+}
+
+button :hover{
+    border: 10px solid red;
+}
+
+.controller {
+    display: flex;
+    justify-content: center;
 }

@@ -13,13 +13,31 @@ const constraints = {
   }
 };
 
+// navigator.mediaDevices.getUserMedia({ audio:false, video: {width: 640, height: 480}   }).then(mediaStream => {
+//   video.srcObject = mediaStream
+//    video.onloadedmetadata = function(e) {
+//    video.play();
+//  };
+
+// }).catch(err => {
+//  document.querySelector('#overlay_msg').style.display="block"
+//  document.querySelector('#picture_take').style.display="none"
+//  document.querySelector('#picture_up').style.display="flex"
+//  console.log("Erreur: " + err);
+// }) 
+
 // Access webcam
 async function init() {
   try {
     const stream = await navigator.mediaDevices.getUserMedia(constraints);
     handleSuccess(stream);
-  } catch (e) {
-    errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+  }
+  catch (e) {
+    document.querySelector('#submit-take-picture').style.display="none"
+    document.querySelector('#select-file').style.display="block"
+    document.querySelector('#upload-file').style.display="block"
+    document.querySelector('.overview').style.marginTop="100px"
+    document.querySelector('#photo_frame').style.height="120px"
   }
 }
 
