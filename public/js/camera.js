@@ -35,9 +35,16 @@ async function init() {
   catch (e) {
     document.querySelector('#submit-take-picture').style.display="none"
     document.querySelector('#select-file').style.display="block"
+    document.querySelector('#select-file').style.marginLeft="auto"
+    document.querySelector('#select-file').style.marginRight="auto"
     document.querySelector('#upload-file').style.display="block"
-    document.querySelector('.overview').style.marginTop="100px"
+    document.querySelector('.overview').style.marginTop="300px"
     document.querySelector('#photo_frame').style.height="120px"
+    document.querySelector('.video-wrap').style.display="none"
+    document.querySelector('#sticker_frame').style.marginTop="120px"
+    document.querySelector('#sticker_frame').style.marginBottom="30px"
+    document.querySelector('#photo-section').style.height="470px"
+    document.querySelector('#upload-form').style.marginTop="20px"
   }
 }
 

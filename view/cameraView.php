@@ -5,10 +5,6 @@
         <div id="photo_frame">
             <h3 class='upload-title'>Photomaton</h3>
             <p style="font-weight:bold; text-align: center; color: #DA2C38"><?= $error ?></p>
-            <form method="POST" enctype="multipart/form-data">
-                <input id="select-file" type="file" name="file" style="display:none" >
-                <button id="upload-file" type="submit" name="submit-upload" style="display:none" >Upload your pictures</button>
-            </form>
 
             <!-- Stream video via webcam -->
             <div class="video-wrap">
@@ -22,6 +18,10 @@
                 <button id='submit-take-picture' type="submit" name='submit-snapshot'>Take picture</button>
                 </form>
             </div>
+            <form id="upload-form" method="POST" enctype="multipart/form-data">
+                <input id="select-file" type="file" name="file" style="display:none" >
+                <button id="upload-file" type="submit" name="submit-upload" style="display:none" >Upload your pictures</button>
+            </form>
 
             <canvas id="canvas" width="640" height="480"style="display:none"></canvas>
             <div class="overview">
@@ -43,8 +43,8 @@
             }
         ?>
         </div>
-        <form method="POST">
-            <button type='submit' name='submit-save'>Save</button>
+        <form id="save-form" method="POST">
+            <button id="save-btn" type='submit' name='submit-save'>Save</button>
         </form>
     </article>
     <article id="feed">
