@@ -50,7 +50,6 @@ if (isset($_POST['submit-upload'])) {
                     $fileNameNew =  '/tampon1.png';
                     $fileDestination = $filePath.$fileNameNew;
                     move_uploaded_file($fileTmpName, $fileDestination);
-                    //add_picture($_SESSION['login'], $fullPath);
                 } else {
                     $_SESSION["error"] = "File too big ! (allowed : 500mb max)";
                 }
