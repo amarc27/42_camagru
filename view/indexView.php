@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="./public/images/insta.ico" type="image/x-icon">
 </head>
 <body>
+    <div id='gradient-line'></div>
     <div id="navbar">
             <nav>
                 <div class="logo">

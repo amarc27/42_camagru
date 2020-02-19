@@ -7,6 +7,7 @@ if(empty($_SESSION['login']))
 require('model/generalModel.php');
 include ('config/database.php');
 require('overlay.php');
+require('resize-class.php');
 
 $filePath = 'public/tmp';
 
@@ -47,10 +48,17 @@ if (isset($_POST['submit-upload'])) {
     if (file_exists($filePath)) {
         if (in_array($fileActualExt, $allowed)) {
             if ($fileError === 0) {
-                if ($fileSize < 500000) {
-                    $fileNameNew =  '/tampon1.png';
-                    $fileDestination = $filePath.$fileNameNew;
-                    move_uploaded_file($fileTmpName, $fileDestination);
+                if ($fileSize < 50000000000000) {
+
+                    $form_field = "file";
+                    $upload_path = "./public/tmp/";
+                
+                    $image_name = "tampon1.png";
+                    $width = 640;
+                    $height = 480;
+                
+                    $imgObj = new Image();
+                    $upload = $imgObj->upload_image($form_field, $upload_path, $image_name, $width, $height);
                 } else {
                     $_SESSION["error"] = "File too big ! (allowed : 500mb max)";
                 }

@@ -19,6 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+    <div id='gradient-line'></div>
     <div id="navbar">
             <nav>
                 <div class="logo">
@@ -47,8 +48,8 @@
     
     <?= $content ?>
 
-    <footer>
+    <!-- <footer>
         <p>Camagru 2020 | Made by amarc & cecourt</p>
-    </footer>
+    </footer> -->
 </body>
 </html>
