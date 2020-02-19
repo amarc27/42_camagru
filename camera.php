@@ -48,8 +48,7 @@ if (isset($_POST['submit-upload'])) {
     if (file_exists($filePath)) {
         if (in_array($fileActualExt, $allowed)) {
             if ($fileError === 0) {
-                if ($fileSize < 50000000000000) {
-
+                if ($fileSize < 500000000) {
                     $form_field = "file";
                     $upload_path = "./public/tmp/";
                 
