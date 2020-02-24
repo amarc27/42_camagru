@@ -37,22 +37,17 @@
     </div>
     
     <section id="content">
-        <article id="photo-section">
-            <div id="photo-frame">
-                
-            </div>
-            <div id="sticker-frame">
-
-            </div>
-        </article>
-        <article id="feed">
-        
+        <article id="gallery">
+            <?php 
+                while($pic = $all_pics->fetch()) {
+                    echo "<div class='image-area'>";
+                        echo "<img src='".$pic['img']."' alt=''>";
+                        // echo "<a class='remove-image' id='".$pic['id_img']."' href='camera.php?action=deletePic&id_img=".$pic['id_img']."' style='display: inline;'>&#215;</a>";
+                    echo "</div>";
+                }
+            ?>
         </article>
     </section>
-    <div class="logs">
-        <p><?php print_r($_SESSION); ?></p>
-        <p><?php print_r($_COOKIE); ?></p>
-    </div>
     <footer>
         <p>Camagru 2020 | Made by amarc</p>
     </footer>

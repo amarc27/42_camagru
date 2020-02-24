@@ -2,7 +2,15 @@
 function get_pics($login) {
     $profile = get_profile($login);
     $db = db_connect();
-    $sql = 'SELECT * FROM picture WHERE id_user = "'.$profile['id'].'"';
+    $sql = 'SELECT * FROM picture WHERE id_user = "'.$profile['id'].'" ORDER BY date DESC';
+    $data = $db->query($sql);
+    $db = null;
+    return ($data);
+}
+
+function get_all_pics() {
+    $db = db_connect();
+    $sql = 'SELECT * FROM `picture` WHERE 1 ORDER BY date DESC';
     $data = $db->query($sql);
     $db = null;
     return ($data);
