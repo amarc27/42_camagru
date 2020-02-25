@@ -11,6 +11,12 @@
     require('model/generalModel.php');
     include ('config/database.php');
 
-    $all_pics = get_all_pics();
+    // $all_pics = get_all_pics();
+    $limit = 9;
+
+    $page = (!empty($_GET['page']) ? $_GET['page'] : 1);
+
+    $all_pics = get_gallery($limit, $page);
+    $page_number = page_number($limit);
 
     require('./view/indexView.php');

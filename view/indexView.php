@@ -38,12 +38,19 @@
     
     <section id="content">
         <article id="gallery">
-            <?php 
+            <?php
                 while($pic = $all_pics->fetch()) {
                     echo "<div class='image-area'>";
                         echo "<img src='".$pic['img']."' alt=''>";
                     echo "</div>";
                 }
+            ?>
+            
+            <?php
+            if ($page > 1)
+                echo "<a href='?page=".($page - 1)."'>Page précédente</a>";
+            if ($page < $page_number)
+                echo "<a href='?page=".($page + 1)."'>Page suivante</a>";
             ?>
         </article>
     </section>
