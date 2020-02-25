@@ -42,7 +42,6 @@
                 while($pic = $all_pics->fetch()) {
                     echo "<div class='image-area'>";
                         echo "<img src='".$pic['img']."' alt=''>";
-                        // echo "<a class='remove-image' id='".$pic['id_img']."' href='camera.php?action=deletePic&id_img=".$pic['id_img']."' style='display: inline;'>&#215;</a>";
                     echo "</div>";
                 }
             ?>

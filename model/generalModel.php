@@ -1,6 +1,7 @@
 <?php
 include ('userModel.php');
 include ('cameraModel.php');
+include ('galleryModel.php');
 
 
 function db_connect() 
