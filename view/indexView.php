@@ -50,7 +50,7 @@
             <?php
                 while($pic = $all_pics->fetch()) {
                     echo "<div class='image-area'>";
-                        echo "<img src='".$pic['img']."' alt=''>";
+                        echo "<a href='comment.php?action=comment&id=".$pic['id_img']."'><img src='".$pic['img']."' alt=''></a>";
                         echo "</br><a href=index.php?action=likeUp&id=".($pic['id_img']).">Like : ". count_like($pic['id_img']) ."</a>";
                         echo "<a href=''> | Comment</a>";
                         echo " | id : ".$pic['id_img'];

@@ -83,3 +83,28 @@ function is_it_liked($login, $id_img) {
 		return true;
 	}
 }
+
+function get_img_src($id_img) {
+	$db = db_connect();
+	$sql = $db->prepare("SELECT * FROM `picture` WHERE id_img = :id_img");
+	$sql->bindParam(':id_img', $id_img, PDO::PARAM_INT);
+	$sql->execute();
+	$data = $sql->fetch(PDO::FETCH_OBJ);
+	$db = null;
+	if ($data == "")
+		return false;
+	else
+		return $data->img;
+}
+
+function add_comment($login, $id_img, $comment) {
+	$db = db_connect();
+	$profile = get_profile($login);
+
+	$sql = $db->prepare("INSERT INTO `comment` (`id_user`, `id_img`, `text`) VALUES (:id_user, :id_img, :text)");
+	$sql->bindParam(':id_user', $profile['id'], PDO::PARAM_INT);
+	$sql->bindParam(':id_img', $id_img, PDO::PARAM_INT);
+	$sql->bindParam(':text', $comment, PDO::PARAM_STR);
+	$sql->execute();
+	$db = null;
+}
