@@ -37,20 +37,25 @@
     </div>
     
     <section id="content">
+        <p style="font-weight:bold; color: #DA2C38; text-align: center"><?= $error ?></p>
+        <div class="pagination">
+            <?php
+                if ($page > 1)
+                    echo "<a href='?page=".($page - 1)."'>Page précédente</a>";
+                if ($page < $page_number)
+                    echo "<a href='?page=".($page + 1)."'>Page suivante</a>";
+            ?>
+        </div>
         <article id="gallery">
             <?php
                 while($pic = $all_pics->fetch()) {
                     echo "<div class='image-area'>";
                         echo "<img src='".$pic['img']."' alt=''>";
+                        echo "</br><a href=index.php?action=likeUp&id=".($pic['id_img']).">Like : ". count_like($pic['id_img']) ."</a>";
+                        echo "<a href=''> | Comment</a>";
+                        echo " | id : ".$pic['id_img'];
                     echo "</div>";
                 }
-            ?>
-            
-            <?php
-            if ($page > 1)
-                echo "<a href='?page=".($page - 1)."'>Page précédente</a>";
-            if ($page < $page_number)
-                echo "<a href='?page=".($page + 1)."'>Page suivante</a>";
             ?>
         </article>
     </section>
