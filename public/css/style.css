@@ -459,7 +459,6 @@ section .activate-frame {
 
 button {
     background-color: #3897f0;
-    /* background: linear-gradient(90deg, rgba(83,92,205,1) 0%, rgba(165,53,185,1) 25%, rgba(252,178,76,1) 100%);  */
     color: #fff;
     border: 1px solid #FAFAFA;
     border-radius: 4px;
@@ -518,43 +517,42 @@ button:hover {
 
 
 
-/*********/
-/* MODAL */
-/*********/
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
-  
-  /* The Close Button */
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
+/****************/
+/* COMMENT PAGE */
+/****************/
+#comment-page-picture {
+    padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgba(83,92,205,1) 0%, rgba(165,53,185,1) 25%, rgba(252,178,76,1) 100%); 
+    margin-right: 50px;
+    height: 550px;
+}
+
+.comment-area {
+    height: 35px;
+    resize: none;
+    box-shadow: 0px 0px 150px lightgray;
+}
+
+.delete-comment-form {
+    float: right !important;
+    margin-right: -25px;
+    margin-top: -3px;
+}
+
+.comment:hover~#delete-comment-btn {
+    border: 1px solid red;
+}
+
+#delete-comment-btn {
+    /* display: none; */
+    border-radius: 10em;
+    padding: 2px 5px 3px;
     text-decoration: none;
-    cursor: pointer;
-  }
+    font: 100 14px/14px sans-serif;
+    background: #7b7b7b;
+    border: 3px solid #fff;
+    color: #FFF;
+    -webkit-transition: background 0.5s;
+    transition: background 0.5s;
+}

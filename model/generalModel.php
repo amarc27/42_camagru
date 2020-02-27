@@ -19,8 +19,7 @@ function db_connect()
 	}
 }
 
-function get_profile($login)
-{
+function get_profile($login) {
 	$db = db_connect();
 	$sql = $db->prepare("SELECT * FROM user WHERE login = :login");
     $sql->bindParam(":login", $login, PDO::PARAM_STR);
@@ -28,6 +27,16 @@ function get_profile($login)
 	$res = $sql->fetch();
 	$db = null;
 	return $res; 
+}
+
+function get_profile_from_id($id_user) {
+	$db = db_connect();
+	$sql = $db->prepare("SELECT * FROM user WHERE id = :id_user");
+    $sql->bindParam(":id_user", $id_user, PDO::PARAM_STR);
+	$sql->execute();
+	$data = $sql->fetch();
+	$db = null;
+	return $data; 
 }
 
 function hasher($passwd)
@@ -88,4 +97,12 @@ function password_secure($password)
 function redir($redir_path)
 {
     echo "<script>setTimeout(\"location.href = \'$redir_path\';\",2000);</script>";
+}
+
+function delete_item($table, $field, $id)
+{
+	$db = db_connect();
+	$sql = "DELETE FROM ".$table."  WHERE ".$table.".".$field." = '".$id."'";
+	$db->query($sql);
+	$db = null;
 }

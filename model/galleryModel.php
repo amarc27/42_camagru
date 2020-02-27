@@ -108,3 +108,15 @@ function add_comment($login, $id_img, $comment) {
 	$sql->execute();
 	$db = null;
 }
+
+function get_comments($id_img) {
+    $db = db_connect();
+    $sql = 'SELECT * FROM `comment` WHERE id_img = "'.$id_img.'"';
+    $data = $db->query($sql);
+    $db = null;
+	return ($data);
+}
+
+function delete_comment($id_com) {
+	delete_item('comment', 'id_com', $id_com);
+}

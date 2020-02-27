@@ -18,14 +18,6 @@ function add_picture($login, $fileToUpload) {
 	return true;
 }
 
-function delete_item($table, $field, $id)
-{
-	$db = db_connect();
-	$sql = "DELETE  FROM ".$table."  WHERE ".$table.".".$field." = '".$id."'";
-	$db->query($sql);
-	$db = null;
-}
-
 function delete_picture($pic)
 {
 	delete_item('picture', 'id_img', $pic);

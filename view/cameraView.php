@@ -52,7 +52,7 @@
             while($picture = $pic_data->fetch()) {
                 echo "<div class='image-area'>";
                     echo "<img src='".$picture['img']."' alt=''>";
-                    echo "<a class='remove-image' id='".$picture['id_img']."' href='camera.php?action=deletePic&id_img=".$picture['id_img']."' style='display: inline;'>&#215;</a>";
+                    echo "<a class='remove-image' href='camera.php?action=deletePic&id_img=".$picture['id_img']."' style='display: inline;'>&#215;</a>";
                 echo "</div>";
             }
         ?>

@@ -22,11 +22,20 @@ if (isset($_GET['action']))
     }
 }
 
-
-//===== NEW COMMENT =====//
+//===== ADD COMMENT =====//
 if (isset($_POST['submit-comment'])) {
     add_comment($_SESSION['login'], $_GET['id'], $_POST['comment']);
 }
+
+
+//===== DELETE COMMENT =====//
+if (!empty($_POST['delete-comment'])) {
+    if (!empty($_POST['id_com']))
+        delete_comment($_POST['id_com']);
+}
+
+
+$comments = get_comments($_GET['id']);
 
 $error = ft_error();
 
