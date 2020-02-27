@@ -3,12 +3,14 @@
 <section id="content">
     <p style="font-weight:bold; color: #DA2C38; text-align: center"><?= $error ?></p>
     <?php
-        if (isset($img_src) && isset($nb_like))
+        if (isset($img_src))
         {
     ?>
         <img id="comment-page-picture" src="<?=$img_src?>" alt="assembly_photo">
         <div class="picture_infos">
-            <p>Likes: <?=$nb_like?></p>
+            <?php
+            echo ("<a href=index.php?action=likeUp&id=".($_GET['id'])."><img id='like_logo' src='public/images/like.png' alt='Like icon'></a>");
+            ?>
             <?php
                 while($data = $comments->fetch())
                 {
@@ -39,6 +41,8 @@
         </div>
     <?php 
         }
+        else
+            // TO DOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
     ?>
 </section>
 <script src="public/js/comment.js"></script>

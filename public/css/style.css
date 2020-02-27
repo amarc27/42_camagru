@@ -528,6 +528,10 @@ button:hover {
     height: 500px;
 }
 
+#like_logo {
+    width: 25px;
+}
+
 .comment-area {
     height: 35px;
     resize: none;

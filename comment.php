@@ -15,9 +15,19 @@ if (isset($_GET['action']))
         if (get_img_src($_GET['id']) === false)
             $_SESSION['error'] = "You hacker, this id does not exist";
         else
-        {
             $img_src = get_img_src($_GET['id']);
-            $nb_like = count_like($_GET['id']);
+    }
+    else if (true) {
+        if (empty($_SESSION['login'])) {
+            $_SESSION['error'] = "You need to be logged in";
+        }
+        else
+        {
+            if ((!empty($_GET['action'])) && ($_GET['action'] == 'likeUp') && (!empty($_GET['id'])))
+            {
+                is_it_liked($_SESSION['login'], $_GET['id']);
+                header('Location: index.php');
+            }
         }
     }
 }
