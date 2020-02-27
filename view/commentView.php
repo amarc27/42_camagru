@@ -15,18 +15,18 @@
                     $profile = get_profile_from_id($data['id_user']);
                     if ($profile['login'] === $_SESSION['login']) {
                         echo("
-                            <div class='comment'>
-                                <form class='delete-comment-form' action='' method='post'>
+                            <div id='parent' class='comment-row'>
+                                <p><strong>".$profile['login']."</strong> &nbsp;".$data['text']."</p>
+                                <form class='delete-comment-form parent-highlight' action='' method='post'>
                                 <input type='hidden' name='id_com' value='".$data['id_com']."'>
                                 <input id='delete-comment-btn' type='submit' name='delete-comment' value='&#215;'>
                                 </form>
-                                <p><strong>".$profile['login']."</strong> &nbsp;".$data['text']."</p>
                             </div>");
                     }
                     else
                     {
                         echo("
-                            <div class='comment'>
+                            <div class='comment-row'>
                                 <p><strong>".$profile['login']."</strong> &nbsp;".$data['text']."</p>
                             </div>");
                     }
@@ -40,16 +40,8 @@
     <?php 
         }
     ?>
-    <script>
-        var input = document.getElementById("areaInput");
-        input.addEventListener("keyup", function(event) {
-            if (event.keyCode === 13) {
-                event.preventDefault();
-                document.getElementById("triggerBtn").click();
-            }
-        });
-    </script>
 </section>
+<script src="public/js/comment.js"></script>
 
 <?php
     $content = ob_get_clean();

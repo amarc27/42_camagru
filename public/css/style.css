@@ -525,27 +525,27 @@ button:hover {
     border-radius: 10px;
     background: linear-gradient(90deg, rgba(83,92,205,1) 0%, rgba(165,53,185,1) 25%, rgba(252,178,76,1) 100%); 
     margin-right: 50px;
-    height: 550px;
+    height: 500px;
 }
 
 .comment-area {
     height: 35px;
     resize: none;
     box-shadow: 0px 0px 150px lightgray;
+    overflow: hidden;
 }
 
-.delete-comment-form {
-    float: right !important;
-    margin-right: -25px;
-    margin-top: -3px;
+.comment-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.comment:hover~#delete-comment-btn {
-    border: 1px solid red;
+.comment-row p {
+    margin: 12px 0px;
 }
 
 #delete-comment-btn {
-    /* display: none; */
     border-radius: 10em;
     padding: 2px 5px 3px;
     text-decoration: none;
@@ -555,4 +555,25 @@ button:hover {
     color: #FFF;
     -webkit-transition: background 0.5s;
     transition: background 0.5s;
+}
+
+#delete-comment-btn:hover {
+    background: #E54E4E;
+    padding: 3px 6px 4px;
+    top: -1px;
+    right: -12px;
+}
+#delete-comment-btn:active {
+    background: #E54E4E;
+    top: 0px;
+    right: -12px;
+}
+
+
+.parent-highlight {
+    display: none;
+}
+
+#parent:hover .parent-highlight {
+    display: block;
 }
