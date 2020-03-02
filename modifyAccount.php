@@ -124,6 +124,8 @@ if (isset($_POST['submit-default-mail']))
     }
 }
 
+
+
 $error = ft_error();
 $lightModif = lightModif();
 

@@ -75,23 +75,18 @@
             </form>
         </div>
         <div class="modify-form notifications-mail">
-            <h3>Do you want to receive notifications by mail</h3>
+            <h3>Receive notifications by mail ?</h3>
             <p style="font-weight:bold; text-align: center; color: #DA2C38"><?= $error ?></p>
-            <form class="subscription-form" action="" method="POST">
-                <table>
-                    <tr>
-                        <td><p>Yes</p></td>
-                        <td><input type="radio" name="notif" value="1"></td>
-                    </tr>
-                    <tr>
-                        <td><p>No</p></td>
-                        <td><input type="radio" name="notif" value="0"></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><input type="submit" name="submit-default-mail" value="Save"></td>
-                    </tr>
-                </table>
+            <form class="subscription-form mail-notif-form" action="" method="POST">
+                <div class='notification-choice'>
+                    <p>Yes</p>
+                    <input type="radio" name="notif" value="1">
+                </div>
+                <div class='notification-choice'>
+                    <p>No</p>
+                    <input type="radio" name="notif" value="0">
+                </div>
+                <input type="submit" name="submit-default-mail" value="Save">
             </form>
 
     </div>

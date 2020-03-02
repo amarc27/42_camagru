@@ -23,9 +23,9 @@ if (isset($_GET['action']))
 if (isset($_POST['submit-comment'])) {
     $str = strip_tags($_POST['comment']);
     $cleaned = trim($str);
-    $perfect = preg_replace('#\s+#', ' ', $cleaned);
-    add_comment($_SESSION['login'], $_GET['id'], $perfect);
-    notif_mail($_GET['id']);
+    $final_str = preg_replace('#\s+#', ' ', $cleaned);
+    add_comment($_SESSION['login'], $_GET['id'], $final_str);
+    notif_mail($_GET['id'], $_SESSION['login'], $final_str);
 }
 
 

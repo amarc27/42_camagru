@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="./public/images/insta.ico" type="image/x-icon">
 </head>
 <body>
+    <div class="sbl-sticks-spin"></div>
     <div id='gradient-line'></div>
     <div id="navbar">
             <nav>
@@ -51,7 +52,7 @@
                 <?php
                     while($pic = $all_pics->fetch()) {
                         echo "<div class='image-area'>";
-                            echo "<img src='".$pic['img']."' alt=''>";
+                            echo "<a href='comment.php?action=comment&id=".$pic['id_img']."'><img src='".$pic['img']."' alt=''></a>";
                         echo "</div>";
                     }
                 ?>

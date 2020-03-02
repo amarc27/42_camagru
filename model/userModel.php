@@ -286,9 +286,9 @@ function reset_mail($login, $mail, $key)
 /* NOTIFICATION MAIL BY CESAR */
 function activate_notification($login, $answer) {
 	$db = db_connect();
-	$sql = $db->prepare("UPDATE `user` SET `default_mail` = '$answer' WHERE `login` = '$login' ");
+	$sql = $db->prepare("UPDATE `user` SET `receive_mail` = '$answer' WHERE `login` = '$login' ");
 	$sql->bindParam(":login", $login, PDO::PARAM_STR);
-	$sql->bindParam(':default_mail', $answer, PDO::PARAM_INT);
+	$sql->bindParam(':receive_mail', $answer, PDO::PARAM_INT);
 	$sql->execute();
 	$db = NULL;
 }
@@ -300,15 +300,14 @@ function verify_notification($id_login) {
 	$sql->execute();
 	$data = $sql->fetch(PDO::FETCH_OBJ);
 	$db = null;
-	if ($data->default_mail == 1)
+	if ($data->receive_mail == 1)
 		return true;
 	return false;
 }
 
-function notif_mail($id) {
-
+function notif_mail($id, $writer, $comment) {
 	$db = db_connect();
-	$sql = $db->prepare("SELECT * FROM `picture` WHERE `id_img` = '$id';");
+	$sql = $db->prepare("SELECT * FROM `picture` WHERE `id_img` = :id_img;");
 	$sql->bindParam(':id_img', $id, PDO::PARAM_INT);
 	$sql->execute();
 	$data = $sql->fetch(PDO::FETCH_OBJ);
@@ -317,15 +316,15 @@ function notif_mail($id) {
 	if (verify_notification($id_author) == true)
 	{
 		$db = db_connect();
-		$sql = $db->prepare("SELECT * FROM `user` WHERE `id` = '$id_author' ");
+		$sql = $db->prepare("SELECT * FROM `user` WHERE `id` = :id ");
 		$sql->bindParam(':id', $id_author, PDO::PARAM_INT);
 		$sql->execute();
 		$data = $sql->fetch(PDO::FETCH_OBJ);
 		$mail = $data->mail;
 		$db = null;
 		$subject = "📥 Camagru : you received a comment"."\n";
-		$link = "http://".$_SERVER['HTTP_HOST']."/camagru/"."account";
-		$message = "Somebody commented one of your photos";
+		$link = "http://".$_SERVER['HTTP_HOST']."/camagru/"."comment.php?action=comment&id=$id";
+		$message = $writer." commented one of your <a href ='$link'>photos</a> : \"".$comment."\".";
 		mail($mail, $subject, $message);
 	}
 }
