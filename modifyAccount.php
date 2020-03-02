@@ -108,6 +108,22 @@ if (isset($_POST['submit-del-user']))
     }
 }
 
+if (isset($_POST['submit-default-mail']))
+{
+    if (empty($_POST['notif']) && isset($_POST['submit-default-mail']))
+        $_SESSION['error'] = "Choose an option, please";
+    if ($_POST['notif'] == 0 && isset($_POST['submit-default-mail']))
+    {
+        $answer = 0;
+        activate_notification($_SESSION['login'], $answer);
+    }
+    else
+    {
+        $answer = 1;
+        activate_notification($_SESSION['login'], $answer);
+    }
+}
+
 $error = ft_error();
 $lightModif = lightModif();
 

@@ -54,10 +54,13 @@ function add_like($login, $id_img) {
 	$db = null;
 }
 
-function remove_like($id_like) {
+function remove_like($login, $id_img) {
 	$db = db_connect();
-	$sql = $db->prepare("DELETE FROM `like` WHERE id_like = :id_like");
-	$sql->bindParam(':id_like', $id_like, PDO::PARAM_INT);
+	$profile = get_profile($login);
+
+	$sql = $db->prepare("DELETE FROM `like` WHERE id_user = :id_user AND id_img = :id_img");
+	$sql->bindParam(':id_user', $profile['id'], PDO::PARAM_INT);
+	$sql->bindParam(':id_img', $id_img, PDO::PARAM_INT);
 	$sql->execute();
 	$db = null;
 }
@@ -66,22 +69,16 @@ function is_it_liked($login, $id_img) {
 	$db = db_connect();
 	$profile = get_profile($login);
 
-	$sql = $db->prepare("SELECT * FROM `like` WHERE id_img = :id_img AND id_user = :id_user");
+	$sql = $db->prepare("SELECT * FROM `like` WHERE `id_img` = :id_img AND `id_user` = :id_user");
 	$sql->bindParam(':id_img', $id_img, PDO::PARAM_INT);
 	$sql->bindParam(':id_user', $profile['id'], PDO::PARAM_INT);
 	$sql->execute();
 	$data = $sql->fetch(PDO::FETCH_OBJ);
 	$db = null;
-	if ($data->liked == "1")
-	{
-		remove_like($data->id_like);
-		return false;
-	}
-	else
-	{
-		add_like($login, $id_img);
+	if ($data)
 		return true;
-	}
+	else
+		return false;
 }
 
 function get_img_src($id_img) {

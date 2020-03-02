@@ -9,7 +9,22 @@
         <img id="comment-page-picture" src="<?=$img_src?>" alt="assembly_photo">
         <div class="picture_infos">
             <?php
-            echo ("<a href=index.php?action=likeUp&id=".($_GET['id'])."><img id='like_logo' src='public/images/like.png' alt='Like icon'></a>");
+                if (is_it_liked($_SESSION['login'], $_GET['id']) == false)
+                {
+                    echo ("
+                        <form id='like-form' action='' method='POST'>
+                            <input type='submit' id='submit-like' name='submit-like' value='' />
+                        </form>
+                    ");
+                }
+                else
+                {
+                    echo ("
+                        <form id='dislike-form' action='' method='POST'>
+                            <input type='submit' id='submit-dislike' name='submit-dislike' value='' />
+                        </form>
+                    ");
+                }
             ?>
             <?php
                 while($data = $comments->fetch())
@@ -20,8 +35,8 @@
                             <div id='parent' class='comment-row'>
                                 <p><strong>".$profile['login']."</strong> &nbsp;".$data['text']."</p>
                                 <form class='delete-comment-form parent-highlight' action='' method='post'>
-                                <input type='hidden' name='id_com' value='".$data['id_com']."'>
-                                <input id='delete-comment-btn' type='submit' name='delete-comment' value='&#215;'>
+                                    <input type='hidden' name='id_com' value='".$data['id_com']."'>
+                                    <input id='delete-comment-btn' type='submit' name='delete-comment' value='&#215;'>
                                 </form>
                             </div>");
                     }

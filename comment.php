@@ -17,35 +17,41 @@ if (isset($_GET['action']))
         else
             $img_src = get_img_src($_GET['id']);
     }
-    else if (true) {
-        if (empty($_SESSION['login'])) {
-            $_SESSION['error'] = "You need to be logged in";
-        }
-        else
-        {
-            if ((!empty($_GET['action'])) && ($_GET['action'] == 'likeUp') && (!empty($_GET['id'])))
-            {
-                is_it_liked($_SESSION['login'], $_GET['id']);
-                header('Location: index.php');
-            }
-        }
-    }
 }
 
 //===== ADD COMMENT =====//
 if (isset($_POST['submit-comment'])) {
-    add_comment($_SESSION['login'], $_GET['id'], $_POST['comment']);
+    $str = strip_tags($_POST['comment']);
+    $cleaned = trim($str);
+    $perfect = preg_replace('#\s+#', ' ', $cleaned);
+    add_comment($_SESSION['login'], $_GET['id'], $perfect);
+    notif_mail($_GET['id']);
 }
 
 
 //===== DELETE COMMENT =====//
-if (!empty($_POST['delete-comment'])) {
+if (isset($_POST['delete-comment'])) {
     if (!empty($_POST['id_com']))
         delete_comment($_POST['id_com']);
 }
 
 
-$comments = get_comments($_GET['id']);
+//===== ADD LIKE =====//
+if (isset($_POST['submit-like']))
+    add_like($_SESSION['login'], $_GET['id']);
+
+
+//===== REMOVE LIKE =====//
+if (isset($_POST['submit-dislike']))
+    remove_like($_SESSION['login'], $_GET['id']);
+
+
+//===== DISPLAY COMMENTS =====//
+if (!empty($_GET['id']) && !empty($_GET['action']))
+    $comments = get_comments($_GET['id']);
+else
+    $_SESSION['error'] = "Wrong url, please go back to gallery";
+
 
 $error = ft_error();
 

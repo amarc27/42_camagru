@@ -235,8 +235,8 @@ footer {
 }
 
 .subscription-form input[type=submit]:hover{
-    background-color: lightsalmon;
-    border: 1px solid #FAFAFA;
+    /* background-color: lightsalmon; */
+    cursor: pointer;
 }
 
 
@@ -494,6 +494,11 @@ button:hover {
 /***********/
 /* GALLERY */
 /***********/
+#correct-gallery {
+    display: flex;
+    flex-direction: column;
+}
+
 #gallery {
     display: flex;
     flex-direction: row;
@@ -502,8 +507,9 @@ button:hover {
     align-content: center;
     flex-wrap: wrap;
     width: 75%;
-    height: 730px;
-    margin-top: 100px;
+    height: 630px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #gallery img {
@@ -511,8 +517,24 @@ button:hover {
     width: 240px;
 }
 
-.pagination {
-    margin-bottom: 50px;
+#pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#pagination a {
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 0px 10px;
+}
+
+#pagination a:hover {
+    cursor: pointer;
+    background-color: #3897f0;
+    color: white;
+    border: 1px solid transparent;
 }
 
 
@@ -580,4 +602,24 @@ button:hover {
 
 #parent:hover .parent-highlight {
     display: block;
+}
+
+#submit-dislike {
+    background-image: url('../images/liked.png');
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+}
+
+#submit-like {
+    background-image: url('../images/like.png');
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
 }

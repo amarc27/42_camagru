@@ -37,27 +37,26 @@
     </div>
     
     <section id="content">
-        <p style="font-weight:bold; color: #DA2C38; text-align: center"><?= $error ?></p>
-        <div class="pagination">
-            <?php
-                if ($page > 1)
-                    echo "<a href='?page=".($page - 1)."'>Page précédente</a>";
-                if ($page < $page_number)
-                    echo "<a href='?page=".($page + 1)."'>Page suivante</a>";
-            ?>
+        <div id="correct-gallery">
+            <p style="font-weight:bold; color: #DA2C38; text-align: center"><?= $error ?></p>
+            <div id="pagination">
+                <?php
+                    if ($page > 1)
+                        echo "<a id='previous-link' href='?page=".($page - 1)."'>Previous</a>";
+                    if ($page < $page_number)
+                        echo "<a id='next-link' href='?page=".($page + 1)."'>Next</a>";
+                ?>
+            </div>
+            <article id="gallery">
+                <?php
+                    while($pic = $all_pics->fetch()) {
+                        echo "<div class='image-area'>";
+                            echo "<img src='".$pic['img']."' alt=''>";
+                        echo "</div>";
+                    }
+                ?>
+            </article>
         </div>
-        <article id="gallery">
-            <?php
-                while($pic = $all_pics->fetch()) {
-                    echo "<div class='image-area'>";
-                        echo "<a href='comment.php?action=comment&id=".$pic['id_img']."'><img src='".$pic['img']."' alt=''></a>";
-                        echo "</br><a href=index.php?action=likeUp&id=".($pic['id_img']).">Like : ". count_like($pic['id_img']) ."</a>";
-                        echo "<a href=''> | Comment</a>";
-                        echo " | id : ".$pic['id_img'];
-                    echo "</div>";
-                }
-            ?>
-        </article>
     </section>
     <footer>
         <p>Camagru 2020 | Made by amarc</p>
