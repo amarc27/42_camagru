@@ -327,25 +327,14 @@ section .activate-frame {
     margin: 0 30px 0px 30px;
 }
 
-/* .profile-picture img {
-    object-fit: cover;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 1px solid gray;
-} */
-
 .profile-picture p {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background: lightblue;
     text-align: center;
     line-height: 150px;
     font-size: 100px;
-    color: cadetblue;
     margin: 0px;
-    padding-top: 5px;
     text-transform: uppercase;
 }
 

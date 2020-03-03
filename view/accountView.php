@@ -3,7 +3,7 @@
 <section id="content account-gallery">
     <div class="profile-header">
         <div class="profile-picture">
-            <p><?= $profile['login'][0]; ?></p>
+            <p id='colored-pp'><?=$profile['login'][0];?></p>
         </div>
         <div class="profile-infos">
             <div class="main">
