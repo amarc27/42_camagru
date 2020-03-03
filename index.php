@@ -12,26 +12,10 @@ require('model/generalModel.php');
 include ('config/database.php');
 
 $limit = 9;
-
 $page = (!empty($_GET['page']) ? $_GET['page'] : 1);
-
-$all_pics = get_gallery($limit, $page);
 $page_number = page_number($limit);
 
-if (isset($_GET['action']))
-{
-    if (empty($_SESSION['login'])) {
-        $_SESSION['error'] = "You need to be logged in";
-    }
-    else
-    {
-        if ((!empty($_GET['action'])) && ($_GET['action'] == 'likeUp') && (!empty($_GET['id'])))
-        {
-            is_it_liked($_SESSION['login'], $_GET['id']);
-            header('Location: index.php');
-        }
-    }
-}
+$all_pics = get_gallery($limit, $page);
 
 $error = ft_error();
 

@@ -56,12 +56,48 @@ function ft_error()
 		return "";
 }
 
-function lightModif()
+function profileModif()
 {
-	if(isset($_SESSION['lightModif']))
+	if(isset($_SESSION['profileModif']))
 	{
-		$tmp = $_SESSION['lightModif'];
-		$_SESSION['lightModif'] = NULL;
+		$tmp = $_SESSION['profileModif'];
+		$_SESSION['profileModif'] = NULL;
+		return $tmp;
+	}
+	else
+		return "";
+}
+
+function passwdModif()
+{
+	if(isset($_SESSION['passwdModif']))
+	{
+		$tmp = $_SESSION['passwdModif'];
+		$_SESSION['passwdModif'] = NULL;
+		return $tmp;
+	}
+	else
+		return "";
+}
+
+function deleteAccount()
+{
+	if(isset($_SESSION['deleteAccount']))
+	{
+		$tmp = $_SESSION['deleteAccount'];
+		$_SESSION['deleteAccount'] = NULL;
+		return $tmp;
+	}
+	else
+		return "";
+}
+
+function receiveMailModif()
+{
+	if(isset($_SESSION['receiveMailModif']))
+	{
+		$tmp = $_SESSION['receiveMailModif'];
+		$_SESSION['receiveMailModif'] = NULL;
 		return $tmp;
 	}
 	else

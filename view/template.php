@@ -19,6 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+    <div class="loader"></div>
     <div id='gradient-line'></div>
     <div id="navbar">
             <nav>

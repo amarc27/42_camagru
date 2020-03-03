@@ -9,11 +9,7 @@
     <link rel="shortcut icon" href="./public/images/insta.ico" type="image/x-icon">
 </head>
 <body>
-    <div class="loader">
-        <!-- <img src="https://media.giphy.com/media/eCwAEs05phtK/giphy.gif" alt="Loading..." />
-        <img src="https://media.giphy.com/media/SM32alLW9WEYo/giphy.gif" alt="Loading..." /> -->
-        <img src="https://media.giphy.com/media/8RyJliVfFM6ac/giphy.gif" alt="Loading..." />
-    </div>
+    <div class="loader"></div>
     <div id='gradient-line'></div>
     <div id="navbar">
             <nav>

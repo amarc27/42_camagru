@@ -12,4 +12,9 @@ else if (isset($_POST['login']) && isset($_POST['passwd']) && isset($_POST['subm
 
 $error = ft_error();
 
+if (file_exists('public/tmp/tampon1.png'))
+	unlink('public/tmp/tampon1.png');
+if (file_exists('public/tmp'))
+	rmdir('public/tmp');
+
 require('view/loginView.php');

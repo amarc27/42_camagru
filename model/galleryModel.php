@@ -32,10 +32,39 @@ function page_number($limit) {
 	return $count;
 }
 
-function count_like($id_img) {
+function get_my_gallery($limit, $page, $login)
+{
 	$db = db_connect();
-	$sql = $db->prepare("SELECT * FROM `like` WHERE id_img = :id_img");
-	$sql->bindParam(':id_img', $id_img, PDO::PARAM_INT);
+	$profile = get_profile($login);
+    $offset = ($page - 1) * $limit;
+
+	$sql = $db->prepare('SELECT * FROM picture WHERE id_user = :id_user ORDER BY date DESC LIMIT :limit OFFSET :offset');
+	$sql->bindValue(':limit', $limit, PDO::PARAM_INT);
+	$sql->bindValue(':offset', $offset, PDO::PARAM_INT);
+	$sql->bindValue(':id_user', $profile['id'], PDO::PARAM_INT);
+	$sql->execute();
+	$db = null;
+	return $sql;
+}
+
+function my_page_number($limit, $login) {
+	$db = db_connect();
+	$profile = get_profile($login);
+	$sql = $db->prepare('SELECT * FROM picture WHERE id_user = :id_user');
+	$sql->bindValue(':id_user', $profile['id'], PDO::PARAM_INT);
+	$sql->execute();
+
+	$row = $sql->rowCount();
+	$count = ceil($row / $limit);
+	$db = null;
+	return $count;
+}
+
+function count_photos($login) {
+	$db = db_connect();
+	$profile = get_profile($login);
+	$sql = $db->prepare("SELECT * FROM `picture` WHERE id_user = :id_user");
+	$sql->bindParam(':id_user', $profile['id'], PDO::PARAM_INT);
 	$sql->execute();
 	
 	$row = $sql->rowCount();

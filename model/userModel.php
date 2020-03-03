@@ -1,26 +1,21 @@
 <?php
 
-function ft_login_exist($login, $notif_type)
+function ft_login_exist($login)
 {
 	$db = db_connect();
 	
 	$sql = $db->prepare("SELECT * FROM `user` WHERE `login`=:login");
-	$sql->bindParam("login", $login, PDO::PARAM_STR);
+	$sql->bindParam(":login", $login, PDO::PARAM_STR);
 	$sql->execute();
 	$data = $sql->fetch(PDO::FETCH_OBJ);
 	$db = null;
 	if ($data == "")
 		return false;
-	else if ($login == $_SESSION['login'])
-		return false;
-	else if ($login == $data->login)
-	{
-		$_SESSION[$notif_type] = "This login already exists";
+	else
 		return true;
-	}
 }
 
-function ft_mail_exist($mail, $notif_type)
+function ft_mail_exist($mail)
 {
 	$db = db_connect();
 	$sql = $db->prepare("SELECT * FROM user WHERE mail=:mail");
@@ -30,14 +25,82 @@ function ft_mail_exist($mail, $notif_type)
 	$db = null;
 	if ($data == "")
 		return false;
-	else if ($mail == $_SESSION['mail'])
-		return false;
 	else
-	{
-		$_SESSION[$notif_type] = "This email already exists";
 		return true;
-	}
 }
+
+function is_my_login($login_test, $login)
+{
+	$db = db_connect();
+
+	$sql = $db->prepare("SELECT * FROM `user` WHERE `login` = '$login'");
+	$sql->bindParam(":login", $login, PDO::PARAM_STR);
+	$sql->execute();
+	$data = $sql->fetch(PDO::FETCH_OBJ);
+	$db = null;
+
+	if ($data->login == $login_test)
+		return true;
+	else
+		return false;
+}
+
+function is_my_mail($mail_test, $mail)
+{
+	$db = db_connect();
+	
+	$sql = $db->prepare("SELECT * FROM `user` WHERE `mail`=:mail");
+	$sql->bindParam("mail", $mail, PDO::PARAM_STR);
+	$sql->execute();
+	$data = $sql->fetch(PDO::FETCH_OBJ);
+	$db = null;
+	if ($data->mail == $mail_test)
+		return true;
+	else
+		return false;
+}
+
+/* AJOUT CESAR POUR MODIFY ACCOUNT */
+function edit_pseudo($new_login, $user_id)
+{
+	$db = db_connect();
+	$new_login = htmlspecialchars($new_login);
+	$sql = $db->prepare("UPDATE user SET login = :new_login WHERE id = :id");
+	$sql->bindParam(":new_login", $new_login, PDO::PARAM_STR);
+	$sql->bindParam(":id", $user_id, PDO::PARAM_INT);
+	$sql->execute();
+	$db = NULL;
+}
+
+function edit_mail($new_mail, $user_id, $login)
+{
+	$db = db_connect();
+	$activation_key = md5(microtime(TRUE)*100000);
+	$new_mail = htmlspecialchars($new_mail);
+	$sql = $db->prepare("UPDATE user SET mail = :new_mail, activation_key = :activation_key WHERE id = :id");
+	$sql->bindParam(":new_mail", $new_mail, PDO::PARAM_STR);
+	$sql->bindParam(":activation_key", $activation_key, PDO::PARAM_STR);
+	$sql->bindParam(":id", $user_id, PDO::PARAM_INT);
+	$sql->execute();
+	$db = NULL;
+	disable_account($login);
+	ft_activation_mail($login, $new_mail, $activation_key);
+}
+
+function edit_others($new_fullname, $new_bio, $id)
+{
+	$db = db_connect();
+	$new_fullname = htmlspecialchars($new_fullname);
+	$new_bio = htmlspecialchars($new_bio);
+	$sql = $db->prepare("UPDATE user SET name = :new_fullname, bio = :new_bio WHERE id = :id");
+	$sql->bindParam(":new_fullname", $new_fullname, PDO::PARAM_STR);
+	$sql->bindParam(":new_bio", $new_bio, PDO::PARAM_STR);
+	$sql->bindParam(":id", $id, PDO::PARAM_INT);
+	$sql->execute();
+	$db = NULL;
+}
+
+/***************************************/
 
 function mail_in_db($mail)
 {
@@ -75,53 +138,6 @@ function ft_user_new($login, $mail, $name, $pass)
 	ft_activation_mail($login, $mail, $activation_key);
 }
 
-function edit_user($login, $mail, $name, $bio)
-{
-	$db = db_connect();
-
-	$profile = get_profile($_SESSION['login']);
-	
-	$login = htmlspecialchars($login);
-	$mail = htmlspecialchars($mail);
-	$name = htmlspecialchars($name);
-	$bio = htmlspecialchars($bio);
-	
-	// $sql = $db->prepare("UPDATE user SET login = :login, mail = :mail, name = :name, bio = :bio WHERE id = :id");
-	$sql = $db->prepare('UPDATE user SET login = :login, mail = :mail, name = :name, bio = :bio WHERE id = :id');
-	$sql->bindParam(":login", $login, PDO::PARAM_STR);
-	$sql->bindParam(":mail", $mail, PDO::PARAM_STR);
-	$sql->bindParam(":name", $name, PDO::PARAM_STR);
-	$sql->bindParam(":bio", $bio, PDO::PARAM_STR);
-	$sql->bindParam(":id", $profile['id'], PDO::PARAM_INT);
-	$sql->execute();
-	$db = null;
-}
-
-function edit_user_activate($login, $mail, $name, $bio)
-{
-	$db = db_connect();
-	
-	$profile = get_profile($_SESSION['login']);
-	
-	$login = htmlspecialchars($login);
-	$mail = htmlspecialchars($mail);
-	$name = htmlspecialchars($name);
-	$bio = htmlspecialchars($bio);
-	
-	$activation_key = md5(microtime(TRUE)*100000);
-	$sql = $db->prepare("UPDATE user SET login = :login, mail = :mail, name = :name, bio = :bio, activation_key = :activation_key WHERE id = :id");
-	$sql->bindParam("login", $login, PDO::PARAM_STR);
-	$sql->bindParam("mail", $mail, PDO::PARAM_STR);
-	$sql->bindParam("name", $name, PDO::PARAM_STR);
-	$sql->bindParam(":bio", $bio, PDO::PARAM_STR);
-	$sql->bindParam(":activation_key", $activation_key, PDO::PARAM_STR);
-	$sql->bindParam(":id", $profile['id'], PDO::PARAM_INT);
-	$sql->execute();
-	$db = null;
-	disable_account($_SESSION['login']);
-	ft_activation_mail($login, $mail, $activation_key);
-}
-
 function check_passwd($login, $new_pass)
 {
 	$profile = get_profile($login);
@@ -140,8 +156,7 @@ function ft_activation_mail($login, $mail, $activation_key)
 	$link .='activate.php?log='.urlencode($login).'&key='.urlencode($activation_key).'&time='.urlencode($current_time);
 
 	$message = "Welcome on Camagru !"."\n\n";
-	$message .="To activate your account, please click on the link below :"."\n\n";
-	$message .= $link;
+	$message .="To activate your account, please click <a href='$link' target='_blank'><strong>here</strong></a>";
 	if (!(mail($mail, $subject, $message)))
 	{
 		$_SESSION['error'] = "An error occured when sending the email, please try again";
@@ -275,8 +290,7 @@ function reset_mail($login, $mail, $key)
 	$link .='resetPasswd.php?log='.urlencode($login).'&key='.urlencode($key).'&time='.urlencode($current_time);
 
 	$message = "Welcome on Camagru !"."\n\n";
-	$message .="to reset your password, please click on the link below :"."\n\n";
-	$message .= $link;
+	$message .="to reset your password, please click <a href='$link' target='_blank'>here</a>";
 	if (!(mail($mail, $subject, $message)))
 	{
 		$_SESSION['error'] = "An error occured when sending the email, please try again";
@@ -324,7 +338,7 @@ function notif_mail($id, $writer, $comment) {
 		$db = null;
 		$subject = "📥 Camagru : you received a comment"."\n";
 		$link = "http://".$_SERVER['HTTP_HOST']."/camagru/"."comment.php?action=comment&id=$id";
-		$message = $writer." commented one of your <a href ='$link'>photos</a> : \"".$comment."\".";
+		$message = $writer." commented one of your <a href='$link' target='_blank'>photos</a> : \"".$comment."\".";
 		mail($mail, $subject, $message);
 	}
 }

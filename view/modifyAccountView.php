@@ -7,7 +7,7 @@
     <div class="modify-account">
         <div class="modify-form">
             <h3>Edit profile</h3>
-            <p style="font-weight:bold; text-align: center; color: #3897f0"><?= $lightModif ?></p>
+            <p style="font-weight:bold; text-align: center; color: #3897f0"><?= $profileModif ?></p>
             <form class="subscription-form" action="" method="post">
                 <table>
                     <tr>
@@ -36,7 +36,7 @@
         <br>
         <div class="modify-form password-form">
             <h3>Edit password</h3>
-            <p style="font-weight:bold; text-align: center; color: #DA2C38"><?= $error ?></p>
+            <p style="font-weight:bold; text-align: center; color: #ffa000"><?= $passwdModif ?></p>
             <form class="subscription-form" action="" method="post">
                 <table>
                     <tr>
@@ -60,11 +60,11 @@
         </div>
         <div class="modify-form password-form">
             <h3>Delete your account</h3>
-            <p style="font-weight:bold; text-align: center; color: #DA2C38"><?= $error ?></p>
+            <p style="font-weight:bold; text-align: center; color: #DA2C38"><?= $deleteAccount ?></p>
             <form class="subscription-form" action="" method="post">
                 <table>
                     <tr>
-                        <td><p>Write your password</p></td>
+                        <td><p>Actual password</p></td>
                         <td><input type="password" name="passwd" required></td>
                     </tr>
                     <tr>
@@ -76,7 +76,13 @@
         </div>
         <div class="modify-form notifications-mail">
             <h3>Receive notifications by mail ?</h3>
-            <p style="font-weight:bold; text-align: center; color: #DA2C38"><?= $error ?></p>
+            <p style="font-weight:bold; text-align: center; color: #3c9c69"><?= $receiveMailModif ?></p>
+            <?php
+                if ($default_mail_status == true)
+                    echo "<p class='mail-status'>Notifications <strong>enabled</strong></p>";
+                else
+                    echo "<p class='mail-status'>Notifications <strong>disabled</strong></p>";
+            ?>
             <form class="subscription-form mail-notif-form" action="" method="POST">
                 <div class='notification-choice'>
                     <p>Yes</p>

@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<section id="content">
+<section id="content" class='comment-view'>
     <p style="font-weight:bold; color: #DA2C38; text-align: center"><?= $error ?></p>
     <?php
         if (isset($img_src))
