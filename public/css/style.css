@@ -5,71 +5,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
 
-
-/**********/
-/* LOADER */
-/**********/
-.sbl-sticks-spin {
-    height: 48px;
-    width: 4px;
-    background: #5a5a5a;
-    position: relative;
-    display: inline-block;
-    border-radius: 5px;
-    animation: animateSticks1 3s ease infinite;
-}
-.sbl-sticks-spin::before, .sbl-sticks-spin::after {
-    height: inherit;
-    width: inherit;
-    content: '';
-    display: block;
-    background: inherit;
-    position: absolute;
-    border-radius: 4px;
-}
-.sbl-sticks-spin::before {
-    left: 0;
-    animation: animateSticks2 1s .5s ease infinite;
-}
-.sbl-sticks-spin::after {
-    right: 0;
-    animation: animateSticks3 1s 1s ease infinite;
-}
-  
-  @keyframes animateSticks1 {
-    0% {
-      transform: rotate(0deg); }
-    25% {
-      transform: rotate(-90deg); }
-    50% {
-      transform: rotate(180deg); }
-    75% {
-      transform: rotate(90deg); }
-    100% {
-      transform: rotate(0); } }
-  
-  @keyframes animateSticks2 {
-    0% {
-      transform: rotate(0deg); }
-    50%, 100% {
-      transform: rotate(55deg); } }
-  
-  @keyframes animateSticks3 {
-    0% {
-      transform: rotate(0deg); }
-    50%, 100% {
-      transform: rotate(115deg); } }
-  
-  @keyframes rotate {
-    0% {
-      transform: rotate(0); }
-    100% {
-      transform: rotate(360deg); } }
-  
-
-
-
-
 html {
     height: 100%;
     box-sizing: border-box;
@@ -93,6 +28,40 @@ body {
 a {
     text-decoration: none;
     color: black;
+}
+
+
+
+/**********/
+/* LOADER */
+/**********/
+.loader {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader > img {
+    width: 500px;
+}
+
+.loader.hidden {
+    animation: fadeOut 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
 }
 
 
@@ -166,7 +135,9 @@ nav .log-btns a {
     padding: 0px 15px;
 }
 
-
+.nav-btn {
+    width: 24px;
+}
 
 
 /****************/

@@ -9,14 +9,14 @@
         <h3>Sign up to see photos and videos from your friends</h3>
         <p style="font-weight:bold; color: #DA2C38"><?= $error ?></p>
         <form class="subscription-form" action="" method="post">
-            <input type="text" name="login" placeholder="Nom d'utilisateur" required maxlength="12">
-            <input type="email" name="mail" placeholder="Adresse e-mail" required maxlength="40">
-            <input type="text" name="name" placeholder="Nom complet" required maxlength="15">
-            <input type="password" name="passwd" placeholder="Mot de passe" required>
-            <input type="password" name="passwd2" placeholder="Confirmation de mot de passe" required>
-            <input type="submit" name="submit" value="S'inscrire">
+            <input type="text" name="login" placeholder="Username" required maxlength="12">
+            <input type="email" name="mail" placeholder="Email" required maxlength="40">
+            <input type="text" name="name" placeholder="Full name" required maxlength="15">
+            <input type="password" name="passwd" placeholder="Password" required>
+            <input type="password" name="passwd2" placeholder="Confirm password" required>
+            <input type="submit" name="submit" value="Sign up">
         </form>
-        <p>Have an account ? <a href=<?php echo $srcDIR."/login.php"?>>Log in</a></p>
+        <p>Already have an account ? <a href=<?php echo $srcDIR."/login.php"?>>Log in</a></p>
     </div>
 </section>
 

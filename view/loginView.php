@@ -8,9 +8,9 @@
         <h3>Log in to see photos and videos from your friends</h3>
         <p style="font-weight:bold; color: #DA2C38"><?= $error ?></p>
         <form class="subscription-form" action="" method="post">
-            <input type="text" name="login" placeholder="Nom d'utilisateur" required maxlength="12">
-            <input type="password" name="passwd" placeholder="Mot de passe" required>
-            <input type="submit" name="submit" value="Se connecter">
+            <input type="text" name="login" placeholder="Username" required maxlength="12">
+            <input type="password" name="passwd" placeholder="Password" required>
+            <input type="submit" name="submit" value="Log in">
         </form>
         <p><a href=<?php echo $srcDIR."/forgotPasswd.php" ?>>Forgot password ?</a></p>
         <p>You don't have an account ? <a href=<?php echo $srcDIR."/signup.php"?>>Sign up</a></p>

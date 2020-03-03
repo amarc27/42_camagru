@@ -9,7 +9,11 @@
     <link rel="shortcut icon" href="./public/images/insta.ico" type="image/x-icon">
 </head>
 <body>
-    <div class="sbl-sticks-spin"></div>
+    <div class="loader">
+        <!-- <img src="https://media.giphy.com/media/eCwAEs05phtK/giphy.gif" alt="Loading..." />
+        <img src="https://media.giphy.com/media/SM32alLW9WEYo/giphy.gif" alt="Loading..." /> -->
+        <img src="https://media.giphy.com/media/8RyJliVfFM6ac/giphy.gif" alt="Loading..." />
+    </div>
     <div id='gradient-line'></div>
     <div id="navbar">
             <nav>
@@ -22,15 +26,15 @@
                 <?php
                     if (!empty($_SESSION['login']))
                     {
-                        echo "<a href=\"$camera_link\"><p>Camera</p></a>";
-                        echo "<a href=\"$account_link\"><p>Account</p></a>";
-                        echo "<a href=\"logout.php?action=out\"><p>Logout</p></a>";
+                        echo "<a href=\"$camera_link\"><img class='nav-btn' src='public/images/camera2.png' alt='Camera button'></a>";
+                        echo "<a href=\"$account_link\"><img class='nav-btn' class='profile-pic' src='public/images/account.png' alt='Logout button'></a>";
+                        echo "<a href=\"logout.php?action=out\"><img class='nav-btn' src='public/images/logout.png' alt='Logout button'></a>";
                     }
 
                     else
                     {
-                        echo "<a href=\"$signup_link\"><p>Signup</p></a>";
-                        echo "<a href=\"$login_link\"><p>Login</p></a>";
+                        echo "<a href=\"$signup_link\"><img class='nav-btn' src='public/images/signup.png' alt='Signup button'></a>";
+                        echo "<a href=\"$login_link\"><img class='nav-btn' src='public/images/login.png' alt='Login button'></a>";
                     }
                 ?>
                 </div>
@@ -62,5 +66,6 @@
     <footer>
         <p>Camagru 2020 | Made by amarc</p>
     </footer>
+    <script src="public/js/loader.js"></script>
 </body>
 </html>
