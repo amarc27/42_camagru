@@ -53,7 +53,7 @@ a {
 }
 
 .loader.hidden {
-    animation: fadeOut 1s;
+    animation: fadeOut 0.1s;
     animation-fill-mode: forwards;
 }
 
@@ -448,6 +448,14 @@ section .activate-frame {
     cursor: pointer;
 }
 
+.account-gallery {
+    flex-direction: column;
+}
+
+.mail-status {
+    text-align: center;
+}
+
 
 /**********/
 /* CAMERA */
@@ -674,4 +682,8 @@ button:hover {
     height: 30px;
     border: none;
     background-color: transparent;
+}
+
+.comment-view {
+    margin-top: 100px;
 }
