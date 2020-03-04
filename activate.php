@@ -4,7 +4,10 @@ session_start();
 require('model/generalModel.php');
 require ('config/database.php');
 
-$profile = get_profile($_GET['log']);
+if (isset($_GET['log']))
+    $profile = get_profile($_GET['log']);
+else
+    $_SESSION['error'] = "Invalid link, please repeat operation";
 
 if (isset($_GET['time']))
 {

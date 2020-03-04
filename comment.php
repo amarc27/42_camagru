@@ -24,7 +24,8 @@ if (isset($_POST['submit-comment'])) {
     $str = strip_tags($_POST['comment']);
     $cleaned = trim($str);
     $final_str = preg_replace('#[\s]+#', ' ', $cleaned);
-    if (preg_match('/[\S]+/', $final_str) == 1)
+    $convert = utf8_encode($final_str);
+    if (preg_match('/[\S]+/', $convert) == 1)
     {
         add_comment($_SESSION['login'], $_GET['id'], $final_str);
         notif_mail($_GET['id'], $_SESSION['login'], $final_str);
