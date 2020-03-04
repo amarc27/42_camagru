@@ -52,7 +52,7 @@
                 <textarea name="comment" id="areaInput" class="comment-area" placeholder="Write a comment" required ></textarea>
                 <input id="triggerBtn" type="submit" name="submit-comment" value="Add comment">
             </form>
-            <p style="font-weight:bold; color: #DA2C38; text-align: center"><?= $error ?></p>
+            <p style="font-weight:bold; color: #DA2C38; text-align: center; width: 300px"><?= $error ?></p>
         </div>
     <?php 
         }
