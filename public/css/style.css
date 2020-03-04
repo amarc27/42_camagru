@@ -593,6 +593,7 @@ button:hover {
 #gallery img {
     margin: 10px 0px;
     width: 240px;
+    border-radius: 5px;
 }
 
 #pagination {
