@@ -23,9 +23,13 @@ if (isset($_GET['action']))
 if (isset($_POST['submit-comment'])) {
     $str = strip_tags($_POST['comment']);
     $cleaned = trim($str);
-    $final_str = preg_replace('#\s+#', ' ', $cleaned);
-    add_comment($_SESSION['login'], $_GET['id'], $final_str);
-    notif_mail($_GET['id'], $_SESSION['login'], $final_str);
+    $final_str = preg_replace('#[\s]+#', ' ', $cleaned);
+    if (preg_match('/[\S]+/', $final_str) == 1)
+    {
+        add_comment($_SESSION['login'], $_GET['id'], $final_str);
+        notif_mail($_GET['id'], $_SESSION['login'], $final_str);
+    }
+    else $_SESSION['error'] = "Only commenting whitespaces is not really interesting...";
 }
 
 

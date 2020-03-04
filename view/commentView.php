@@ -1,7 +1,6 @@
 <?php ob_start(); ?>
 
 <section id="content" class='comment-view'>
-    <p style="font-weight:bold; color: #DA2C38; text-align: center"><?= $error ?></p>
     <?php
         if (isset($img_src))
         {
@@ -53,11 +52,12 @@
                 <textarea name="comment" id="areaInput" class="comment-area" placeholder="Write a comment" required ></textarea>
                 <input id="triggerBtn" type="submit" name="submit-comment" value="Add comment">
             </form>
+            <p style="font-weight:bold; color: #DA2C38; text-align: center"><?= $error ?></p>
         </div>
     <?php 
         }
         else
-            // TO DOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+            header('Location: index.php');
     ?>
 </section>
 <script src="public/js/comment.js"></script>
