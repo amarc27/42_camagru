@@ -18,4 +18,7 @@ function changeColor() {
     document.getElementById('colored-pp').style.color = text;
 }
 
-setTimeout(changeColor(), 2);
+
+if (document.getElementById('colored-pp')) {
+    setTimeout(changeColor(), 10000);
+}

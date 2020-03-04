@@ -312,9 +312,15 @@ section .activate-frame {
     font-weight: 500;
 }
 
+
+
 /***********/
 /* PROFILE */
 /***********/
+.account-gallery {
+    flex-direction: column;
+}
+
 .profile-header {
     width: 100%;
     display: flex;
@@ -370,9 +376,14 @@ section .activate-frame {
     flex-direction: column;
 }
 
+.profile-bio p {
+    margin: 2px 0px;
+}
+
 .profile-bio .profile-name {
     font-weight: 700;
 }
+
 
 
 /******************/
@@ -451,13 +462,10 @@ section .activate-frame {
     cursor: pointer;
 }
 
-.account-gallery {
-    flex-direction: column;
-}
-
 .mail-status {
     text-align: center;
 }
+
 
 
 /**********/
@@ -465,6 +473,7 @@ section .activate-frame {
 /**********/
 .image-area {
     position: relative;
+    border: 1px solid #FAFAFA;
 }
 
 .remove-image {
@@ -590,7 +599,7 @@ button:hover {
     border: 1px solid lightgray;
     border-radius: 4px;
     padding: 5px;
-    margin: 0px 10px;
+    margin: 15px 10px;
 }
 
 #pagination a:hover {
@@ -689,4 +698,116 @@ button:hover {
 
 .comment-view {
     margin-top: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*****************/
+/* MEDIA QUERIES */
+/*****************/
+
+/* PHONE */
+@media all 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    #content {
+        width: 100%;
+    }
+
+    #correct-gallery {
+        margin-top: 570px;   
+    }
+
+    #correct-gallery.account-view {
+        margin-top: 630px;   
+    }
+
+    nav {
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    #pagination {
+        margin-top: 610px;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .profile-picture {
+        width: auto;
+        margin-bottom: 10px;
+        margin-left: -98px;
+    }
+
+    .profile-picture p {
+        width: 80px;
+        height: 80px;
+        line-height: 85px;
+        font-size: 40px;
+        margin-left: -60px;
+    }
+
+    .profile-infos .main a {
+        font-size: 14px;
+    }
+}
+
+/* TABLET */
+@media all 
+  and (min-device-width: 568px) 
+  and (max-device-width: 967px) {
+    #content {
+        width: 100%;
+    }
+
+    #correct-gallery {
+        margin-top: 160px;   
+    }
+
+    nav {
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    #pagination {
+        margin-top: 190px;
+    }
+}
+
+/* COMPUTER */
+@media all 
+  and (min-device-width: 968px)
+  and (max-device-width: 1600px) {
+    #content {
+        width: 100%;
+    }
+
+    #correct-gallery {
+        margin-top: -40px;   
+    }
+
+    nav {
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    #pagination {
+        margin-top: 0px;
+    }
 }

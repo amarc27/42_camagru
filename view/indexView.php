@@ -40,14 +40,6 @@
     <section id="content">
         <div id="correct-gallery">
             <p style="font-weight:bold; color: #DA2C38; text-align: center"><?= $error ?></p>
-            <div id="pagination">
-                <?php
-                    if ($page > 1)
-                        echo "<a id='previous-link' href='?page=".($page - 1)."'>Previous</a>";
-                    if ($page < $page_number)
-                        echo "<a id='next-link' href='?page=".($page + 1)."'>Next</a>";
-                ?>
-            </div>
             <article id="gallery">
                 <?php
                     while($pic = $all_pics->fetch()) {
@@ -57,11 +49,19 @@
                     }
                 ?>
             </article>
+            <div id="pagination">
+                <?php
+                    if ($page > 1)
+                        echo "<a id='previous-link' href='?page=".($page - 1)."'>Previous</a>";
+                    if ($page < $page_number)
+                        echo "<a id='next-link' href='?page=".($page + 1)."'>Next</a>";
+                ?>
+            </div>
         </div>
     </section>
-    <footer>
+    <!-- <footer>
         <p>Camagru 2020 | Made by amarc</p>
-    </footer>
+    </footer> -->
     <script src="public/js/loader.js"></script>
 </body>
 </html>

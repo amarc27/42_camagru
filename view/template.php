@@ -53,6 +53,6 @@
         <p>Camagru 2020 | Made by amarc & cecourt</p>
     </footer> -->
     <script type='text/javascript' src="public/js/loader.js"></script>
-    <!-- <script type='text/javascript' src="public/js/colors.js"></script> -->
+    <script type='text/javascript' src="public/js/colors.js"></script>
 </body>
 </html>
