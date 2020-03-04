@@ -16,7 +16,7 @@
                 </div>
                 <div class="profile-bio">
                     <p class="profile-name"><?= $profile['name'] ?></p>
-                    <p><?= $profile['bio'] ?></p>
+                    <p class="profile-bio"><?= $profile['bio'] ?></p>
                 </div>
             </div>
         </div>
@@ -42,6 +42,7 @@
         </div>
     </div>
 </section>
+<script src="public/js/colors.js"></script>
 
 <?php
     $content = ob_get_clean();

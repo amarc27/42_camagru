@@ -38,7 +38,7 @@
     </div>
     
     <section id="content">
-        <div id="correct-gallery">
+        <div id="correct-gallery" class='index-gallery'>
             <p style="font-weight:bold; color: #DA2C38; text-align: center"><?= $error ?></p>
             <article id="gallery">
                 <?php

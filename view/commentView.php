@@ -50,7 +50,7 @@
                 }
             ?>
             <form class="subscription-form comment-form" action="" method="post">
-                <textarea name="comment" id="areaInput" class="comment-area" placeholder="Write a comment" required autofocus ></textarea>
+                <textarea name="comment" id="areaInput" class="comment-area" placeholder="Write a comment" required ></textarea>
                 <input id="triggerBtn" type="submit" name="submit-comment" value="Add comment">
             </form>
         </div>

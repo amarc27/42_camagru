@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<section id="content">
+<section id="content" class='camera-view'>
     <article id="photo-section">
         <div id="photo_frame">
             <h3 class='upload-title'>Photomaton</h3>

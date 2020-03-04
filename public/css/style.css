@@ -271,7 +271,6 @@ footer {
 }
 
 .subscription-form input[type=submit]:hover{
-    /* background-color: lightsalmon; */
     cursor: pointer;
 }
 
@@ -326,10 +325,11 @@ section .activate-frame {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: 50px 0px;
 }
 
 .profile-picture {
-    width: 16%;
+    /* width: 16%; */
     margin: 0 30px 0px 30px;
 }
 
@@ -398,12 +398,8 @@ section .activate-frame {
     border: 1px solid #e6e6e6;
     border-radius: 1px;
     background-color: #FFF;
-    margin: 0px 10px;
+    margin: 30px 10px;
     margin-top: 10px;
-}
-
-.password-form {
-    margin-top: 50px;
 }
 
 .modify-form > h3 {
@@ -445,6 +441,11 @@ section .activate-frame {
     width: 300px;
 }
 
+.modify-form textarea {
+    height: 80px;
+    resize: none;
+}
+
 .mail-notif-form {
     display: flex;
     flex-direction: column;
@@ -464,6 +465,11 @@ section .activate-frame {
 
 .mail-status {
     text-align: center;
+}
+
+.mail-notif-form input[type=submit]{
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -667,7 +673,6 @@ button:hover {
     right: -12px;
 }
 
-
 .parent-highlight {
     display: none;
 }
@@ -727,12 +732,9 @@ button:hover {
         width: 100%;
     }
 
-    #correct-gallery {
-        margin-top: 570px;   
-    }
-
+    /* Account */
     #correct-gallery.account-view {
-        margin-top: 630px;   
+        margin-top: 660px;   
     }
 
     nav {
@@ -746,13 +748,13 @@ button:hover {
 
     .profile-header {
         flex-direction: column;
-        margin-bottom: 20px;
+        margin: 30px 0px;
     }
 
     .profile-picture {
         width: auto;
         margin-bottom: 10px;
-        margin-left: -98px;
+        margin-right: auto;
     }
 
     .profile-picture p {
@@ -760,11 +762,79 @@ button:hover {
         height: 80px;
         line-height: 85px;
         font-size: 40px;
-        margin-left: -60px;
     }
 
     .profile-infos .main a {
         font-size: 14px;
+    }
+
+    /* Modify account */
+    .modify-form {
+        width: 92%;
+        padding: 10px;
+    }
+
+    .modify-form form td p {
+        font-size: 12px;
+        margin-right: 10px;
+        text-align: left;
+    }
+
+    .modify-form input, textarea {
+        width: 200px;
+    }
+
+    .modify-form textarea {
+        height: 120px;
+    }
+
+    .modify-form table {
+        width: 100%;
+    }
+
+    .notification-choice input {
+        width: 15px;
+    }
+
+    /* Index gallery */
+    #correct-gallery.index-gallery {
+        margin-top: 630px;   
+    }
+
+    /* Activate */
+    section.activate-view {
+        width: 95%;
+    }
+
+    .activate-frame {
+        width: 300px;
+    }
+
+    /* Comment picture */
+    #content.comment-view {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    #comment-page-picture {
+        object-fit: contain;
+        width: 95%;
+        height: auto;
+        margin: 0px auto;
+        padding: 0px;
+        background: none;
+    }
+
+    .picture_infos {
+        margin: 20px 10px;
+    }
+
+    .comment-area {
+        width: 100%;
+    }
+
+    .parent-highlight {
+        display: block;
     }
 }
 
@@ -776,8 +846,9 @@ button:hover {
         width: 100%;
     }
 
-    #correct-gallery {
-        margin-top: 160px;   
+    /* Account */
+    #correct-gallery.account-view {
+        margin-top: 250px;
     }
 
     nav {
@@ -786,7 +857,68 @@ button:hover {
     }
 
     #pagination {
-        margin-top: 190px;
+        margin-top: 220px;
+    }
+
+    .profile-header {
+        margin: 30px 0px;
+    }
+
+    .profile-infos {
+        padding-left: 20px;
+    }
+
+    .profile-bio {
+        padding-right: 20px;
+    }
+
+    /* Modify account */
+    .modify-form {
+        padding: 10px;
+    }
+
+    .modify-form input, textarea {
+        width: 280px;
+    }
+
+    .modify-form textarea {
+        height: 120px;
+    }
+
+    .notification-choice input {
+        width: 15px;
+    }
+
+    /* Index gallery */
+    #correct-gallery.index-gallery {
+        margin-top: 160px;   
+    }
+
+    /* Comment picture */
+    #content.comment-view {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    #comment-page-picture {
+        object-fit: contain;
+        width: 95%;
+        height: auto;
+        margin: 0px auto;
+        padding: 0px;
+        background: none;
+    }
+
+    .picture_infos {
+        margin: 20px 150px;
+    }
+
+    .comment-area {
+        width: 100%;
+    }
+
+    .parent-highlight {
+        display: block;
     }
 }
 
@@ -798,8 +930,8 @@ button:hover {
         width: 100%;
     }
 
-    #correct-gallery {
-        margin-top: -40px;   
+    #correct-gallery.account-view {
+        margin-top: 70px;
     }
 
     nav {
@@ -809,5 +941,13 @@ button:hover {
 
     #pagination {
         margin-top: 0px;
+    }
+
+    .profile-header {
+        margin: 30px 0px;
+    }
+
+    .profile-bio {
+        padding-right: 20px;
     }
 }

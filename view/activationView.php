@@ -1,6 +1,6 @@
 <?php ob_start() ?>
 
-<section>
+<section class='activate-view'>
     <div class="activate-frame">
         <h2>Account activation</h2>
         <p style="font-weight:bold; color: #DA2C38; text-align:center"><?= $error ?></p>

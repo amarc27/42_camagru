@@ -24,6 +24,8 @@ else if ($_GET['page'] > floor($nb_photos / 9))
     $_GET['page'] = 1;
     $page = 1;
 }
+else
+    $page = $_GET['page'];
 
 $my_page_number = my_page_number($limit, $_SESSION['login']);
 
