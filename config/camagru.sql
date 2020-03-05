@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 04 mars 2020 à 10:33
+-- Généré le :  jeu. 05 mars 2020 à 06:59
 -- Version du serveur :  5.6.43
 -- Version de PHP :  5.6.40
 
@@ -218,7 +218,7 @@ CREATE TABLE `user` (
   `pass` varchar(255) NOT NULL,
   `active` enum('0','1') NOT NULL DEFAULT '0',
   `profile_pic` varchar(255) NOT NULL DEFAULT './public/images/profile.png',
-  `bio` varchar(140) NOT NULL,
+  `bio` varchar(140) DEFAULT NULL,
   `activation_key` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
