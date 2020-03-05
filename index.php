@@ -12,8 +12,18 @@ require('model/generalModel.php');
 include ('config/database.php');
 
 $limit = 9;
-$page = (!empty($_GET['page']) ? $_GET['page'] : 1);
 $page_number = page_number($limit);
+
+if (empty($_GET['page']))
+    $_GET['page'] = 1;
+else if ($_GET['page'] <= 0)
+    $_GET['page'] = 1;
+else if ($_GET['page'] > $page_number)
+    $_GET['page'] = 1;
+else
+    $page = $_GET['page'];
+
+$page = (!empty($_GET['page']) ? $_GET['page'] : 1);
 
 $all_pics = get_gallery($limit, $page);
 
