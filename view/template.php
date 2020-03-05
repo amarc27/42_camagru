@@ -5,6 +5,14 @@
     $login_link = $srcDIR."/login.php";
     $logout_link = $srcDIR."/logout.php";
     $camera_link = $srcDIR."/camera.php";
+
+    function onCameraView() {
+        $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        if ($actual_link == "http://localhost:8080/camagru/camera.php")
+            return true;
+        else
+            return false;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -49,9 +57,15 @@
     
     <?= $content ?>
 
-    <!-- <footer>
-        <p>Camagru 2020 | Made by amarc & cecourt</p>
-    </footer> -->
+    <?php
+        if (onCameraView() == false) {
+            echo("
+            <footer>
+                <p>Camagru 2020 | Made by amarc & cecourt</p>
+            </footer>
+            ");
+        }
+    ?>
     <script type='text/javascript' src="public/js/loader.js"></script>
 </body>
 </html>
