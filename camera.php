@@ -99,7 +99,7 @@ if (isset($_GET['action']))
 //===== SAVE PHOTO =====//
 if (isset($_POST['submit-save']))
 {
-    if ((!empty($_GET['action'] === 'putSticker') && (!empty($_GET['id_sticker']))))
+    if ((isset($_GET['action'])) && ($_GET['action'] === 'putSticker') && (!empty($_GET['id_sticker'])))
     {
         if (get_one_sticker($_GET['id_sticker']) !== false)
         {

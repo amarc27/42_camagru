@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 05 mars 2020 à 06:59
+-- Généré le :  jeu. 05 mars 2020 à 07:15
 -- Version du serveur :  5.6.43
 -- Version de PHP :  5.6.40
 
@@ -136,45 +136,44 @@ CREATE TABLE `picture` (
   `id_user` int(11) NOT NULL,
   `img` varchar(255) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `like` int(11) NOT NULL DEFAULT '0',
-  `id_com` int(11) NOT NULL
+  `like` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `picture`
 --
 
-INSERT INTO `picture` (`id_img`, `id_user`, `img`, `date`, `like`, `id_com`) VALUES
-(24, 83, 'public/picture/toto/toto(4).png', '2020-02-18 18:01:56', 0, 0),
-(25, 83, 'public/picture/toto/toto(5).png', '2020-02-18 18:02:05', 0, 0),
-(26, 83, 'public/picture/toto/toto(6).png', '2020-02-18 18:24:34', 0, 0),
-(27, 83, 'public/picture/toto/toto(7).png', '2020-02-18 18:26:58', 0, 0),
-(28, 83, 'public/picture/toto/toto(8).png', '2020-02-18 22:18:35', 0, 0),
-(29, 83, 'public/picture/toto/toto(9).png', '2020-02-19 16:50:10', 0, 0),
-(31, 83, 'public/picture/toto/toto(11).png', '2020-02-19 17:42:24', 0, 0),
-(32, 83, 'public/picture/toto/toto(12).png', '2020-02-19 18:03:04', 0, 0),
-(33, 83, 'public/picture/toto/toto(13).png', '2020-02-19 18:03:26', 0, 0),
-(36, 83, 'public/picture/toto/toto(14).png', '2020-02-24 19:43:47', 0, 0),
-(37, 83, 'public/picture/toto/toto(15).png', '2020-02-24 19:43:50', 0, 0),
-(38, 83, 'public/picture/toto/toto(16).png', '2020-02-24 19:43:52', 0, 0),
-(39, 83, 'public/picture/toto/toto(17).png', '2020-02-24 19:44:02', 0, 0),
-(40, 83, 'public/picture/toto/toto(18).png', '2020-02-24 19:44:06', 0, 0),
-(41, 83, 'public/picture/toto/toto(19).png', '2020-02-24 19:44:08', 0, 0),
-(42, 83, 'public/picture/toto/toto(20).png', '2020-02-25 16:19:26', 0, 0),
-(45, 83, 'public/picture/toto/toto(23).png', '2020-02-25 16:20:01', 0, 0),
-(47, 83, 'public/picture/toto/toto(25).png', '2020-02-26 17:30:05', 0, 0),
-(48, 83, 'public/picture/toto/toto(26).png', '2020-02-26 17:30:48', 0, 0),
-(51, 77, 'public/picture/dodo/dodo(1).png', '2020-03-03 19:01:26', 0, 0),
-(52, 84, 'public/picture/Cecece92/Cecece92(3).png', '2020-03-03 21:36:34', 0, 0),
-(53, 84, 'public/picture/Cecece92/Cecece92(4).png', '2020-03-03 21:36:40', 0, 0),
-(54, 84, 'public/picture/Cecece92/Cecece92(5).png', '2020-03-03 21:36:46', 0, 0),
-(55, 77, 'public/picture/toto/toto(27).png', '2020-03-04 17:13:28', 0, 0),
-(56, 77, 'public/picture/toto/toto(28).png', '2020-03-04 17:13:41', 0, 0),
-(57, 77, 'public/picture/toto/toto(29).png', '2020-03-04 17:13:47', 0, 0),
-(58, 82, 'public/picture/toto/toto(30).png', '2020-03-04 18:50:08', 0, 0),
-(59, 82, 'public/picture/toto/toto(31).png', '2020-03-04 18:53:48', 0, 0),
-(60, 84, 'public/picture/toto/toto(32).png', '2020-03-04 19:18:38', 0, 0),
-(62, 84, 'public/picture/toto/toto(34).png', '2020-03-04 19:18:57', 0, 0);
+INSERT INTO `picture` (`id_img`, `id_user`, `img`, `date`, `like`) VALUES
+(24, 83, 'public/picture/toto/toto(4).png', '2020-02-18 18:01:56', 0),
+(25, 83, 'public/picture/toto/toto(5).png', '2020-02-18 18:02:05', 0),
+(26, 83, 'public/picture/toto/toto(6).png', '2020-02-18 18:24:34', 0),
+(27, 83, 'public/picture/toto/toto(7).png', '2020-02-18 18:26:58', 0),
+(28, 83, 'public/picture/toto/toto(8).png', '2020-02-18 22:18:35', 0),
+(29, 83, 'public/picture/toto/toto(9).png', '2020-02-19 16:50:10', 0),
+(31, 83, 'public/picture/toto/toto(11).png', '2020-02-19 17:42:24', 0),
+(32, 83, 'public/picture/toto/toto(12).png', '2020-02-19 18:03:04', 0),
+(33, 83, 'public/picture/toto/toto(13).png', '2020-02-19 18:03:26', 0),
+(36, 83, 'public/picture/toto/toto(14).png', '2020-02-24 19:43:47', 0),
+(37, 83, 'public/picture/toto/toto(15).png', '2020-02-24 19:43:50', 0),
+(38, 83, 'public/picture/toto/toto(16).png', '2020-02-24 19:43:52', 0),
+(39, 83, 'public/picture/toto/toto(17).png', '2020-02-24 19:44:02', 0),
+(40, 83, 'public/picture/toto/toto(18).png', '2020-02-24 19:44:06', 0),
+(41, 83, 'public/picture/toto/toto(19).png', '2020-02-24 19:44:08', 0),
+(42, 83, 'public/picture/toto/toto(20).png', '2020-02-25 16:19:26', 0),
+(45, 83, 'public/picture/toto/toto(23).png', '2020-02-25 16:20:01', 0),
+(47, 83, 'public/picture/toto/toto(25).png', '2020-02-26 17:30:05', 0),
+(48, 83, 'public/picture/toto/toto(26).png', '2020-02-26 17:30:48', 0),
+(51, 77, 'public/picture/dodo/dodo(1).png', '2020-03-03 19:01:26', 0),
+(52, 84, 'public/picture/Cecece92/Cecece92(3).png', '2020-03-03 21:36:34', 0),
+(53, 84, 'public/picture/Cecece92/Cecece92(4).png', '2020-03-03 21:36:40', 0),
+(54, 84, 'public/picture/Cecece92/Cecece92(5).png', '2020-03-03 21:36:46', 0),
+(55, 77, 'public/picture/toto/toto(27).png', '2020-03-04 17:13:28', 0),
+(56, 77, 'public/picture/toto/toto(28).png', '2020-03-04 17:13:41', 0),
+(57, 77, 'public/picture/toto/toto(29).png', '2020-03-04 17:13:47', 0),
+(58, 82, 'public/picture/toto/toto(30).png', '2020-03-04 18:50:08', 0),
+(59, 82, 'public/picture/toto/toto(31).png', '2020-03-04 18:53:48', 0),
+(60, 84, 'public/picture/toto/toto(32).png', '2020-03-04 19:18:38', 0),
+(62, 84, 'public/picture/toto/toto(34).png', '2020-03-04 19:18:57', 0);
 
 -- --------------------------------------------------------
 
