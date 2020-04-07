@@ -22,9 +22,9 @@ You need to have installed [PHP](http://www.php.net/), [MySQL](https://www.mysql
 ### Modify the config file
 *config/database.php* contains all the information needed by [MySQL](https://www.mysql.com/fr/) to connect Camagru to its database. Modify it so it matches your MySQL config.
 ```
-$DB_DSN = 'mysql:host=localhost; dbname=db_camagru';
-$DB_USER = 'yourMysqlUsername';
-$DB_PASSWORD = "yourMysqlPassword";
+$DB_DSN = 'mysql:host=127.0.0.1;dbname=camagru';
+$DB_USER = 'root';
+$DB_PASSWORD = "[Password entered during MAMP/WAMP/LAMP installation]";
 ```
 ### Launch the server
 Start the server you have installed.
