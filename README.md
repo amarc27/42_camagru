@@ -17,7 +17,7 @@ We also learned a lot about :
 ## Get the requirement
 
 ### Prerequisites
-You need to have installed [PHP](http://www.php.net/), [MySQL](https://www.mysql.com/fr/) and a local web server of your choice ([Apache](https://httpd.apache.org/), [nginx](https://www.nginx.com/), etc)
+You need to have installed [PHP](http://www.php.net/), [MySQL](https://www.mysql.com/fr/) and a local web server of your choice ([MAMP](https://bitnami.com/stack/mamp/installer), [WAMP](https://bitnami.com/stack/wamp/installer), [LAMP](https://bitnami.com/stack/lamp/installer))
 
 ### Modify the config file
 *config/database.php* contains all the information needed by [MySQL](https://www.mysql.com/fr/) to connect Camagru to its database. Modify it so it matches your MySQL config.
