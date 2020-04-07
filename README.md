@@ -30,7 +30,7 @@ $DB_PASSWORD = "[Password entered during MAMP/WAMP/LAMP installation]";
 Start the server you have installed.
 
 ## Get started
-1. In phpMyAdmin, add a db called "camagru"
+1. In phpMyAdmin, add a db called `camagru`
 2. In console, run `php config/setup.php`
 3. Go to index.php
 4. Have fun
