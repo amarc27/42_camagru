@@ -5,7 +5,7 @@ try {
     $db = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $db->query(file_get_contents('camagru.sql'));
+    $db->query(file_get_contents('config/camagru.sql'));
     header("Location:../index.php");
 }
 catch (PDOException $e) {
