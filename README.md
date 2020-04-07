@@ -29,15 +29,11 @@ $DB_PASSWORD = "[Password entered during MAMP/WAMP/LAMP installation]";
 ### Launch the server
 Start the server you have installed.
 
-### Create the database
-If no database is found a *"cliquez ici"* link will appear. Click on it to create a new database.
-
 ## Get started
-You can now create a new profile or sign in with one of the profile below:
-* food : *food*
-* travel : *travel*
-* architecture : *architecture*
-* people : *people*
+1. In phpMyAdmin, add a db called "camagru"
+2. In console, run `php config/setup.php`
+3. Go to index.php
+4. Have fun
 
 ### Screenshots
 
