@@ -13,12 +13,4 @@ De même, vous allez maintenant découvrir les joies du :
 
 ## Screenshots
 
-[Signup](https://raw.githubusercontent.com/amarc27/42_camagru/master/public/sreenshots/Signup.png)
-
-[Gallery](https://raw.githubusercontent.com/amarc27/42_camagru/master/public/sreenshots/Gallery.png)
-
-[Camera](https://raw.githubusercontent.com/amarc27/42_camagru/master/public/sreenshots/Camera.png)
-
-[Comment and Like](https://raw.githubusercontent.com/amarc27/42_camagru/master/public/sreenshots/Comment_photo.png)
-
-[Edit user](https://raw.githubusercontent.com/amarc27/42_camagru/master/public/sreenshots/Edit_user.png)
+[Screenshots]()
