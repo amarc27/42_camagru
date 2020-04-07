@@ -1,9 +1,7 @@
 # 42_camagru
+Camagru is a small Instagram-like site allowing users to make and share photo-montages. We have implemented, with bare hands (frameworks are forbidden), the basic functionalities found on most sites with a user base.
 
-Vous voici prêt à créer vos premieres applications Web, comme des grands. 
-Si vousl’aviez pas déjà remarqué, le web est un monde vaste et riche, permettant de mettre à disposition rapidement des applications ou du contenu pour le monde entier. Et puisque vous avez les bases, maintenant il est temps de se détacher des eternelles to-do lists et sites de eCommerce, et de voguer vers des projets de plus grandes envergures.
-
-De même, vous allez maintenant découvrir les joies du :
+We also learned a lot about :
 * Responsive design
 * DOM Manipulation
 * SQL Debugging
