@@ -14,7 +14,7 @@ We also learned a lot about :
 * MySQL
 * HTML/CSS
 
-## Get the requirement
+## Get it
 
 ### Prerequisites
 You need to have installed [PHP](http://www.php.net/), [MySQL](https://www.mysql.com/fr/) and a local web server of your choice ([MAMP](https://bitnami.com/stack/mamp/installer), [WAMP](https://bitnami.com/stack/wamp/installer), [LAMP](https://bitnami.com/stack/lamp/installer))
