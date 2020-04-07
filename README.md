@@ -32,7 +32,7 @@ Start the server you have installed.
 ## Get started
 1. In phpMyAdmin, add a db called `camagru`
 2. In console, run `php config/setup.php`
-3. Go to index.php
+3. Go to the path `localhost:[yourPort]` in your navigator
 4. Have fun
 
 ### Screenshots
