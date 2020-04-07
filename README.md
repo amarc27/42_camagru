@@ -9,10 +9,10 @@ We also learned a lot about :
 * Cross Origin Resource Sharing
 
 ### Build with
-* [PHP](http://www.php.net/) - Backend
-* [Javascript](https://www.javascript.com/) - Frontend
-* [MySQL](https://www.mysql.com/fr/) - Database
-* HTML/CSS - Frontend
+* PHP
+* Javascript
+* MySQL
+* HTML/CSS
 
 ## Get the requirement
 
