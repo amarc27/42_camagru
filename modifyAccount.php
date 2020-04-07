@@ -10,6 +10,7 @@ if(empty($_SESSION['login']))
 $profile = get_profile($_SESSION['login']);
 $default_mail_status = verify_notification($profile['id']);
 
+//===== MODIFY MAIN INFOS =====//
 if (isset($_POST['submit-main']))
 {
     $_POST['login'] = strip_tags($_POST['login']);
@@ -53,7 +54,7 @@ if (isset($_POST['submit-main']))
     }
 }
 
-
+//===== MODIFY PASSWORD =====//
 if (isset($_POST['submit-new-pass']))
 {
     $_POST['oldPasswd'] = strip_tags($_POST['oldPasswd']);
@@ -92,6 +93,7 @@ if (isset($_POST['submit-new-pass']))
     }
 }
 
+//===== DELETE MY ACCOUNT =====//
 if (isset($_POST['submit-del-user']))
 {
     $_POST['passwd'] = strip_tags($_POST['passwd']);
@@ -111,6 +113,7 @@ if (isset($_POST['submit-del-user']))
     }
 }
 
+//===== MODIFY NOTIFICATIONS BY MAIL =====//
 if (isset($_POST['submit-default-mail']))
 {
     if (!isset($_POST['notif']) && isset($_POST['submit-default-mail']))

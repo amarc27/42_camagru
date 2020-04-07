@@ -60,7 +60,6 @@ function is_my_mail($mail_test, $mail)
 		return false;
 }
 
-/* AJOUT CESAR POUR MODIFY ACCOUNT */
 function edit_pseudo($new_login, $user_id)
 {
 	$db = db_connect();
@@ -99,8 +98,6 @@ function edit_others($new_fullname, $new_bio, $id)
 	$sql->execute();
 	$db = NULL;
 }
-
-/***************************************/
 
 function mail_in_db($mail)
 {
